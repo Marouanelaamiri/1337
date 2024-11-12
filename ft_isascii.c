@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marouane <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: malaamir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 21:49:05 by marouane          #+#    #+#             */
-/*   Updated: 2024/10/25 21:52:33 by marouane         ###   ########.fr       */
+/*   Created: 2024/10/28 09:02:18 by malaamir          #+#    #+#             */
+/*   Updated: 2024/10/28 09:06:31 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
-#include <stdio.h>
+/*#include <stdio.h>
 int main()
 {
-	printf("%d\n", ft_isascii(127));
-}
+	printf("%d\n", ft_isascii(0));
+}*/

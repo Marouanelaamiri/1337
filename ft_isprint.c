@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marouane <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: malaamir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 12:05:05 by marouane          #+#    #+#             */
-/*   Updated: 2024/10/26 12:08:02 by marouane         ###   ########.fr       */
+/*   Created: 2024/10/28 09:11:21 by malaamir          #+#    #+#             */
+/*   Updated: 2024/10/28 09:13:21 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
-#include <stdio.h>
+/*#include <stdio.h>
 int main()
 {
-	printf("%d\n", ft_isprint(0));
-}
+	printf("%d\n", ft_isprint(32));
+}*/

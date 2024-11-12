@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 08:51:44 by malaamir          #+#    #+#             */
-/*   Updated: 2024/10/31 13:10:05 by malaamir         ###   ########.fr       */
+/*   Created: 2024/11/04 15:57:51 by malaamir          #+#    #+#             */
+/*   Updated: 2024/11/04 18:53:49 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+#include "libft.h"
+
+void	ft_putendl_fd(char *s, int fd)
 {
-	if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z'))
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write (fd, &s[i], 1);
+		i++;
+	}
+	write (fd, "\n", 1);
 }
 /*#include <stdio.h>
+#include <sys/fcntl.h>
 int main()
 {
-	int c = '*';
-  printf("%d\n", ft_isalnum(c));
+	int fd = open("tets", O_RDWR, 0);
+	ft_putendl_fd("hello", fd);
+	printf("%d\n", fd);
+	int lfd = open("test", O_RDWR, 0);
+	printf("%d\n", lfd);
+	ft_putendl_fd("hello", lfd);
+	return 0;
 }*/

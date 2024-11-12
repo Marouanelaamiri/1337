@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marouane <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: malaamir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 21:34:55 by marouane          #+#    #+#             */
-/*   Updated: 2024/10/25 21:38:49 by marouane         ###   ########.fr       */
+/*   Created: 2024/10/28 09:07:02 by malaamir          #+#    #+#             */
+/*   Updated: 2024/10/28 11:06:57 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 int	ft_isdigit(int c)
 {
-	if(c >= '0' && c <= '9')
-		return 1;
-	return 0;
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
-#include <stdio.h>
+/*#include <stdio.h>
 int main()
 {
-	int c = '1';
-	printf("%d\n" , ft_isdigit(c));
-}
+	printf("%d\n", ft_isdigit(-1));
+	printf("%d\n", isdigit(-1));
+}*/

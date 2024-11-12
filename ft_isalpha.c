@@ -3,26 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marouane <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 21:14:31 by marouane          #+#    #+#             */
-/*   Updated: 2024/10/25 21:32:58 by marouane         ###   ########.fr       */
+/*   Created: 2024/10/28 08:55:49 by malaamir          #+#    #+#             */
+/*   Updated: 2024/10/31 13:11:00 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalpha(int c)
 {
-	{
-		if ((c >  'z' || c <  'a') && (c  > 'Z' || c < 'A'))
-		{
-			return 0;
-		}
-	}
-	return 1;
+	if ((c > 'z' || c < 'a') && (c > 'Z' || c < 'A'))
+		return (0);
+	return (1);
 }
-#include <stdio.h>
+/*#include <stdio.h>
 int main()
 {
-	int alpha= '1';
+	int alpha = '*';
 	printf("%d\n", ft_isalpha(alpha));
-}
+}*/

@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 09:18:06 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/07 11:15:31 by malaamir         ###   ########.fr       */
+/*   Created: 2024/10/28 10:32:30 by malaamir          #+#    #+#             */
+/*   Updated: 2024/11/06 09:53:37 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)// function calculate the len of a str
+void	ft_bzero(void *s, size_t n)// void *s means that the pointer s can point to any type of data
 {
-	size_t	i;
+	char	*tmp;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	tmp = (char *)s;// we used char cuz its 1 byte it work best for memory manipulation
+	while (n > 0)
+	{
+		*tmp = '\0';
+		tmp++;
+		n--;// de decrease n meaning now there is less byte to erase.
+	}
 }
 /*#include<stdio.h>
+
 int main()
 {
-	printf("%zu\n", ft_strlen("HELLO WORLD"));
+	char str[10] = "hello";
+	size_t n = 0;
+	printf("befor : %s\n", str);
+
+	ft_bzero(str, n);
+
+	printf("after : %s\n", str);
 }*/
