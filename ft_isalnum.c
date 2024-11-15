@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 08:51:44 by malaamir          #+#    #+#             */
-/*   Updated: 2024/10/31 13:10:05 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/10 12:23:33 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	ft_isalnum(int c)
 		return (1);
 	return (0);
 }
-/*#include <stdio.h>
+#include <stdio.h>
 int main()
 {
-	int c = '*';
+	int c = 48;
   printf("%d\n", ft_isalnum(c));
-}*/
+}

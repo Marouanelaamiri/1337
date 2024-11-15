@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:21:33 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/07 12:41:32 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/12 14:15:04 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)//this fun
 	size_t	j;// itirate in needle
 	char	*haystack1; 
 	char	*needle1;
-
 	i = 0;
 	j = 0;
 	haystack1 = (char *) haystack;// we cast haystack and needle for easier manipulation
 	needle1 = (char *) needle;
+	if (haystack == NULL && len == 0)
+		return (needle1);
 	if (needle1[j] == '\0')// if needle is an empty string we return the haystack without iriration cuz we know its there .
 		return (haystack1);
 	while (haystack[i] && i < len)// dont check beyon haystack and stay within the len as well
@@ -39,12 +40,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)//this fun
 	}
 	return (0);
 }
-/*#include <stdio.h>
+#include <stdio.h>
 #include <string.h>
 int main()
 {
-	char	haystack[] = "looking for marouane in maroc malaga marwane";
-	char	needle[] = "marouane";
-	//printf("%s\n", ft_strnstr(haystack, needle, 0));
-	printf("%s\n", strnstr(haystack, needle, 0));
-}*/
+	  char	haystack[] = "looking for\0\0 marouane in maroc malaga marwane";
+	  char	needle[] = "\0\0";
+	printf("%s\n", ft_strnstr(haystack, needle, 20));
+	printf("%s\n", strnstr(haystack, needle, 20));
+}

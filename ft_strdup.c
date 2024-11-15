@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:21:55 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/06 20:12:38 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:05:07 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ char	*ft_strdup(const char *s1)// this function creat a duplicat of a string and
 	dst[i] = '\0';
 	return (dst);
 }
-/*#include <stdio.h>
-#include <string.h>
-int main()
-{
-	//char str[1024];
-	//memset(str, 'a' , 1023);
-	printf("ft_strdup : %s\n", ft_strdup(NULL));
-	printf("strdup : %s\n", strdup(NULL));
+// #include <stdio.h>
+// #include <string.h>
+// int main()
+// {
+// 	char str[1024];
+// 	memset(str, 'a' , 1023);
+// 	printf("ft_strdup : %s\n", ft_strdup(str));
+// 	printf("strdup : %s\n", strdup(str));
 	
-}*/
+// }

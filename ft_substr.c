@@ -6,13 +6,13 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:44:49 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/07 14:08:51 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/10 14:32:24 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)// this function extract a sub string from the str it start at a giving position
+char	*ft_substr(const char *s, unsigned int start, size_t len)// this function extract a sub string from the str it start
 																// at a giving position till len
 {
 	char	*tmp;

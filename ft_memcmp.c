@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:31:30 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/06 13:16:11 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/09 11:58:26 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)// compare a memory block
 			return (str1[i] - str2[i]);
 		i++;
 	}
-	return (0);//if we didnt find any diffrence we return 0 //both strs are the same//
+	return (0);
+}
+//if we didnt find any diffrence we return 0 //both strs are the same//
 /*#include<stdio.h>
 #include<string.h>
 int main()

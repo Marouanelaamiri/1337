@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 16:33:09 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/06 19:56:32 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/10 15:29:29 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	*ft_free(char **arr, int count)
 	i = 0;
 	while (i < count)
 	{
-		if (arr[i])// if this slot where i is has been alocated 
+		if (arr[i])// if there is something in this slot where i is has been alocated 
 			free(arr[i]); // free it
 		i++;
 	}
@@ -86,27 +86,24 @@ char	**ft_split(char const *s, char c)
 	}
 	return (arr);
 }
-/*#include <stdio.h>
+char *i = NULL;
+#include <stdio.h>
 
 int main()
 {
 char **result;
 int i = 0;
 
-result = ft_split("", '\0');
-if (!result)
+result = ft_split("hello\0world\0fkfkfk", '\0');
+
+while (result[i] || result[i + 1] != NULL )
+{
+	printf("Result [%d]: %s\n",i , result[i]);
+	i++;
+}
+ft_free(result , i);
+if (!result[i]) 
 {
 	printf("Result is NULL\n");
 }
-else
-{
-	if (!result[i])
-		printf("submalloc is NULL\n");
-	while (result[i])
-	{
-		printf("Result [%d]: %s\n",i , result[i]);
-		i++;
-	}
-	ft_free(result , i);
 }
-}*/

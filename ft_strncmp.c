@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:31:17 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/07 11:40:55 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/12 14:14:37 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)//this funcion compare 2
 	size_t			i;
 	unsigned char	*str1;
 	unsigned char	*str2;
+	if (!s1 && !s2 && n <= 0)
+		return (0);
 
 	str1 = (unsigned char *)s1;// we cat so we have more range 255, and we dont face problems with ascii values
 	str2 = (unsigned char *)s2;
@@ -29,11 +31,12 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)//this funcion compare 2
 	}
 	return (0);
 }
-/*#include<stdio.h>
-#include<string.h>
-int main()
-{
-	char	s1[] = "hello";
-	char	s2[] = "hello";
-	printf("%d\n", ft_strncmp(s1, s2, 5));
-}*/
+// #include<stdio.h>
+// #include<string.h>
+// int main()
+// {
+// 	 char	s1[] = "jhello";
+// 	// char	s2[] = "hello";
+// 	//printf("%d\n", ft_strncmp(NULL, NULL, -1));
+// 	printf("%d\n", strncmp(NULL,NULL, 0));
+// }

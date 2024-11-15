@@ -6,14 +6,14 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 17:19:53 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/06 20:09:25 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:31:55 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 char	*ft_strchr(const char *s, int c)// this function locate the first occurence of a char 'c'
-										// and and it return a pointer to that location
+										// and it return a pointer to that location
 {
 	size_t	i;
 	char	ch;
@@ -31,12 +31,12 @@ char	*ft_strchr(const char *s, int c)// this function locate the first occurence
 	else
 		return (NULL);
 }
-/*#include<string.h>
+#include<string.h>
 #include<stdio.h>
 int main()
 {
 	char	str[] = "hello iooeeeepppp";
-	char	ch = 'e';
+	char	ch = '\0';
 	printf("char '%c' found at : %s\n",ch, ft_strchr(str, ch));
-//	printf("%c, %s\n", ch, strchr(str, ch));
-}*/
+	printf("char '%c'  found at : %s\n", ch, strchr(str, ch));
+}

@@ -6,12 +6,11 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:40:03 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/06 09:44:29 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:35:47 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
 static int	ft_whitespaces(int c)
 {
@@ -40,23 +39,25 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		result = result * 10 + (str[i] - '0'); // we multiply by 10 to shit the digits to the left
-		if (result > LONG_MAX && sign == 1)//this case if to handl long ints 
+		result = result * 10 + (str[i] - '0'); // we multiply by 10 to shift the digits to the left
+		if (result > 9223372036854775807 && sign == 1)//this case to handl long ints 
 			return (-1);
-		if (result > LONG_MAX && sign == -1)
+		if (result > 9223372036854775807 && sign == -1)
 			return (0);
 		i++;
 	}
 	return (result * sign);
 }
-/*#include <stdio.h>
+#include <stdio.h>
 
 int main ()
 {
     printf("%d\n", ft_atoi("-9223372036854775809"));
     printf("%d\n", atoi("-9223372036854775809"));
+    printf("%d\n", ft_atoi("9223372036854775809"));
+    printf("%d\n", atoi("9223372036854775809"));
     printf("%d\n", ft_atoi("2147483648"));
     printf("%d\n", atoi("2147483648"));
     printf("%d\n", ft_atoi("-2147483649"));
     printf("%d\n", atoi("-2147483649"));
-}*/
+}

@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:55:46 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/07 12:57:47 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:33:22 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ char	*ft_strrchr(const char *s, int c)//this functions goal is to find the last 
 	else
 		return (ret);
 }
-/*#include<string.h>
+#include<string.h>
 #include<stdio.h>
 int main()
 {
-    char	str[] = "hello eipeeeeepeeei";
-    char	ch = 'e';
-	printf("char '%c' found at : %s\n",ch, ft_strrchr(str, ch));
- //   printf("%c, %s\n", ch, strrchr(str, ch));
-}*/
+    // char	str[] = "hello eipeeeeepeeei";
+    // char	ch = 'e';
+	printf("%s\n" ,ft_strrchr("l\0\0l" ,'l'));
+   printf("%s\n", strrchr("l\0\0l", 'l'));
+}

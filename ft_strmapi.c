@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:02:19 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/07 11:32:18 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/12 14:15:51 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,18 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))// same as striter
 	str[i] = '\0';
 	return (str);
 }
-/*#include <stdio.h>
+// #include <stdio.h>
 
-int add(int a, int b)
-{
-	return a + b;
-}
+// char	to_upper(unsigned int i, char c)
+// {
+	
+// 	if (c <= 'z' && c >= 'a')
+// 		return (c - 32);
+// 	return (c);
+// }
 
-int mul(int a, int b)
-{
-	return a * b;
-}
-
-int main()
-{
-	printf("%d\n", add(10, 20)); //30
-	printf("%d\n", mul(10, 20)); //200
-}*/
+// int main()
+// {
+// 	char *str = "hello";
+// 	printf("%s\n", ft_strmapi(str, to_upper));
+// }
