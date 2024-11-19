@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:08:23 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/18 14:09:22 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:10:32 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_putchar_printf(char c, size_t *count)
 {
-	if (write(1, &c, 1) == -1)
-		return ;
-	(*count)++;
+	write (1, &c, 1);
+	*count = *count + 1;
 }

@@ -6,16 +6,16 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:27:44 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/18 17:32:29 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:11:05 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puthexa_printf(unsigned int n, size_t *count, char *c)
+void	ft_puthexa_printf(unsigned int n, size_t *count, const char *c)
 {
-	
 	char	digits;
+
 	if (n >= 16)
 	{
 		ft_puthexa_printf(n / 16, count, c);

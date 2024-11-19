@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:38:56 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/18 18:13:56 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:14:01 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 static void	ckeck_format(const char *str, va_list args, size_t *count)
 {
-	char	*baselow;
-	char	*baseup;
-
-	baselow = "0123456789abcdef";
-	baseup = "0123456789ABCDEF";
 	if (*str == 'c')
 		ft_putchar_printf(va_arg(args, int), count);
 	else if (*str == 's')
@@ -32,9 +27,11 @@ static void	ckeck_format(const char *str, va_list args, size_t *count)
 	else if (*str == 'p')
 		ft_putaddress_printf((size_t) va_arg(args, void *), count);
 	else if (*str == 'x')
-		ft_puthexa_printf(va_arg(args, unsigned int), count, baselow);
+		ft_puthexa_printf(va_arg(args, unsigned int), count,
+			"0123456789abcdef");
 	else if (*str == 'X')
-		ft_puthexa_printf(va_arg(args, unsigned int), count, baseup);
+		ft_puthexa_printf(va_arg(args, unsigned int), count,
+			"0123456789ABCDEF");
 	else
 		count += write(1, str, 1);
 }
@@ -53,14 +50,14 @@ int	ft_printf(const char *format, ...)
 	while (*str)
 	{
 		if (*str != '%')
-		{
-			ft_putchar_printf(*str, &count);
-			str++;
-		}
+		
+			ft_putchar_printf(*str++, &count);
 		else
 		{
-			str += 1;
+			str++;
 			ckeck_format(str, args, &count);
+			if (*str == '\0')
+				break ;
 			str++;
 		}
 	}
@@ -69,22 +66,6 @@ int	ft_printf(const char *format, ...)
 }
 // int main()
 // {
-// 	ft_printf("%d\n", -42);
-// 	printf("%d\n", -42);
-// 	ft_printf("%s\n",NULL);
-// 	printf( "%s\n",NULL);
-// 	ft_printf("%c\n", '\0');
-// 	printf("%c\n", '\0');
-// 	ft_printf("%u\n", -10000);
-// 	printf("%u\n", -10000);
-// 	ft_printf("%%\n");
-// 	printf("%%\n");
-// 	ft_printf("%p\n", NULL);
-// 	printf("%p\n", NULL);
-// 	ft_printf("%x\n", 42222);
-// 	printf("%x\n", 42222);
-// 	ft_printf("%X\n", 4222233);
-// 	printf("%X\n", 4222233);
-// 	ft_printf("hello world , %u, %i, %d, %p\n" , 42 , -32, 1929292, NULL);
-// 	printf("hello world, %u, %d, %i, %p" , 42 , -32, 1929292, NULL);
+// 	ft_printf("Hello " "%s , %d , %c , %p , %x , %X\n", "world", 100, 'a', NULL, 3583, 3583);
+// 	printf("Hello " "%s , %d , %c , %p , %x , %X", "world", 100, 'a', NULL, 3583, 3583);
 // }
