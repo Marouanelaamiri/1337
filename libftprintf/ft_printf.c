@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:38:56 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/19 20:14:01 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:23:21 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	ft_printf(const char *format, ...)
 	while (*str)
 	{
 		if (*str != '%')
-		
 			ft_putchar_printf(*str++, &count);
 		else
 		{
@@ -64,8 +63,9 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+// #include <stdio.h>
 // int main()
 // {
-// 	ft_printf("Hello " "%s , %d , %c , %p , %x , %X\n", "world", 100, 'a', NULL, 3583, 3583);
-// 	printf("Hello " "%s , %d , %c , %p , %x , %X", "world", 100, 'a', NULL, 3583, 3583);
+// 	ft_printf("Hello " "%s , %d ,%d , %c , %p , %x , %X\n", "world", 2147483648, -21474836489,'a', 0, 3583, 3583);
+// 	printf("Hello " "%s , %d ,%d , %c , %p , %x , %X", "world", 2147483648, -21474836489, 'a', 0, 3583, 3583);
 // }
