@@ -6,12 +6,21 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 13:28:24 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/24 15:26:46 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:52:51 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-char *get_remaning(char *buffer)// extract the remaining data from the buffer
+
+char	*ft_free(char *buffer, char *buf)
+{
+    char *temp;
+
+    temp = ft_strjoin(buffer, buf);
+    free(buffer);
+    return (temp);
+}
+char	*get_remaning(char *buffer)// extract the remaining data from the buffer
 {
 	int i;
 	int j;
@@ -19,7 +28,6 @@ char *get_remaning(char *buffer)// extract the remaining data from the buffer
 
 	i = 0;
 	j = 0;
-
 	while (buffer[i] && buffer[i] != '\n')
 		i++; // find the end of the line
 	if(!buffer[i])
@@ -27,17 +35,17 @@ char *get_remaning(char *buffer)// extract the remaining data from the buffer
 		free(buffer); // if there is no data remaining free the buffer and return null
 		return (NULL);
 	}
-	line = malloc(ft_strlen(buffer) - i + 1); // allocate space for the remaining data including 
+	line = malloc(ft_strlen(buffer) - i + 1); 
+	if (!line)
+		return (NULL);								             // allocate space for the remaining data including 
 	i++;									//the null terminator - i + 1 is for putting the null terminator at the end
 	while (buffer[i])
 		line[j++] = buffer[i++]; // copy the remaining data from the buffer to the line 
 	line[j] = '\0';
-
 	free(buffer);
 	return (line); // return the remaining data (the updated data)
 }
-
-char *get_line(char *buffer)// extract the line from the buffer
+char	*getline(char *buffer)// extract the line from the buffer
 {
 	char *line;
 	int i;
@@ -58,38 +66,36 @@ char *get_line(char *buffer)// extract the line from the buffer
 	}
 	if (buffer[i] == '\n') //  if a new line was found we add it to the line
 	{
-		line[i] = '\n';
-		i++;
+		line[i++] = '\n';
 	}
 	line[i] = '\0';
 	return (line);	// return the extarcted line
 }
-char *read_from_file(int fd, char *str)// read data into the static buffer
+char	*read_from_file(int fd, char *str)// read data into the static buffer
 {
-	char *buffer;
-	int bytes_read;
+	char	*buffer;
+	int		bytes_read;
 
 	buffer = malloc(BUFFER_SIZE + 1);
+	
 	if (!buffer)
 		return (NULL);
-	bytes_read = read(fd, buffer, BUFFER_SIZE);// 1
-	while (bytes_read != 0)// we allocate space for the buffer of size BUFFER_SIZE and reads data into it
+	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)// we allocate space for the buffer of size BUFFER_SIZE and reads data into it
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
+		buffer[bytes_read] = '\0';
+		str = ft_free(str, buffer);
+		if (!str)
 		{
 			free(buffer);
 			return (NULL);
 		}
-		buffer[bytes_read] = '\0';
-		str = ft_strjoin(str, buffer);//
 		if (ft_strchr(buffer, '\n'))//
 			break;
 	}
 	free(buffer);
 	return (str);// returns the updated buffer with data read from the file
 }
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char *buffer;
 	char *line;
@@ -102,7 +108,25 @@ char *get_next_line(int fd)
 	buffer = read_from_file(fd, buffer);
 	if (!buffer)
 		return (NULL);
-	line = get_line(buffer);
+	
+	line = getline(buffer);
 	buffer = get_remaning (buffer);
 	return (line);
 }
+// void f()
+// {
+// 	system("leaks a.out");
+// }
+// int main()
+// {
+// 	atexit(f);
+// 	int fd = open("test.txt", O_RDONLY);
+// 	char *line = get_next_line(fd);
+// 	while (line != NULL)
+// 	{
+// 		printf("%s\n", line);
+// 		free(line);
+// 		line = get_next_line(fd);	
+// 	}
+// 	close(fd);
+// }
