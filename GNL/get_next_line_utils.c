@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 13:28:22 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/24 20:03:28 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:03:38 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s1)
 	size_t	i;
 
 	i = 0;
+	if (!s1)//
+    	return (NULL);
 	dst = malloc(ft_strlen(s1) + 1);
 	if (dst == NULL)
 		return (NULL);
@@ -38,7 +40,7 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-char	*ft_strjoin(char const *s1, char const *s2) // machi diali gha kantesi biha (tl3 lia hdchi f kri)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len_s1;
 	size_t	len_s2;

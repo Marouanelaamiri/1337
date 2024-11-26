@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 13:28:18 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/24 20:03:36 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/25 13:46:33 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <fcntl.h>
+# include <stdio.h>
 
 char	*get_next_line(int fd);
 
