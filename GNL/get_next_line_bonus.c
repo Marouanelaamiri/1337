@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 13:28:24 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/26 12:27:19 by malaamir         ###   ########.fr       */
+/*   Created: 2024/11/26 19:34:50 by malaamir          #+#    #+#             */
+/*   Updated: 2024/11/26 20:10:44 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_joinfree(char *buffer, char *new_buffer)
 {
@@ -103,19 +103,19 @@ char	*read_from_file(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffers[FD_SETSIZE];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (free(buffer), buffer = NULL, NULL);
-	buffer = read_from_file(fd, buffer);
-	if (!buffer)
+	if (fd < 0 || fd >= FD_SETSIZE || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (free(buffers[fd]), buffers[fd] = NULL, NULL);
+	buffers[fd] = read_from_file(fd, buffers[fd]);
+	if (!buffers[fd])
 		return (NULL);
-	line = ft_getline(buffer);
+	line = ft_getline(buffers[fd]);
 	if (!line)
-		return (free(buffer), buffer = NULL, NULL);
-	buffer = get_remaning (buffer);
-	if (!buffer)
-		buffer = NULL;
+		return (free(buffers[fd]), buffers[fd] = NULL, NULL);
+	buffers[fd] = get_remaning (buffers[fd]);
+	if (!buffers[fd])
+		buffers[fd] = NULL;
 	return (line);
 }
