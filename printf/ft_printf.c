@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:38:56 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/21 18:23:58 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:56:38 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ckeck_format(const char *str, va_list args, size_t *count)
 		ft_puthexa_printf(va_arg(args, unsigned int), count,
 			"0123456789ABCDEF");
 	else
-		count += write(1, str, 1);
+		count += write(1, str, 1);// "hello"
 }
 
 int	ft_printf(const char *format, ...)
@@ -50,7 +50,7 @@ int	ft_printf(const char *format, ...)
 	while (*str)
 	{
 		if (*str != '%')
-			ft_putchar_printf(*str++, &count);
+			ft_putchar_printf(*str++, &count);// %%%l
 		else
 		{
 			str++;
@@ -120,15 +120,16 @@ int main()
 	// printf("\n");
 	// printf("%s", *ptr);
 	// close(1);
-	 fclose(stdout);
 	//  fclose(stdout);
-	int i;
-	int j;
-	i = ft_printf("rgerg");
-	j = printf("rgerg");
-	perror(ft_itoa(i));
-	perror(ft_itoa(j));
+	// //  fclose(stdout);
+	// int i;
+	// int j;
+	// i = ft_printf("rgerg");
+	// j = printf("rgerg");
+	// perror(ft_itoa(i));
+	// perror(ft_itoa(j));
 	// ft_printf("%%%%l");
 	// printf("\n");
 	// printf("%%%%l");
+	 ft_printf("%%%%%%%%%l");
 }
