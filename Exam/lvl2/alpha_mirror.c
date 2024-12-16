@@ -6,7 +6,26 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 20:32:31 by malaamir          #+#    #+#             */
-/*   Updated: 2024/12/16 20:32:31 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/12/16 21:41:45 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
+int main(int ac, char **av)
+{
+	if (ac == 2)
+	{
+		while (*av[1])
+		{
+			if (*av[1] >= 'a' && *av[1] <= 'z')
+				*av[1] = 'z' - (*av[1] - 'a');
+			else if (*av[1] >= 'A' && *av[1] <= 'Z')
+				*av[1] = 'Z' - (*av[1] - 'A');
+			write(1, av[1], 1);
+			av[1]++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
+}
