@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 22:02:08 by malaamir          #+#    #+#             */
-/*   Updated: 2024/12/17 11:52:50 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/12/17 11:53:04 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ int main(int ac, char **av)
 			printf("%d\n", atoi(av[1]) % atoi(av[3]));
 	}
 	else
-		write(1, "\n", 1)
+		write(1, "\n", 1);
 }
