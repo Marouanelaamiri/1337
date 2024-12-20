@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fizzbuzz.c                                         :+:      :+:    :+:   */
+/*   ft_puthexa_printf.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/14 19:24:44 by malaamir          #+#    #+#             */
-/*   Updated: 2024/12/18 12:11:17 by malaamir         ###   ########.fr       */
+/*   Created: 2024/11/18 17:27:44 by malaamir          #+#    #+#             */
+/*   Updated: 2024/11/20 17:20:47 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
-void	ft_putnbr(int n)
+void	ft_puthexa_printf(unsigned long int n, size_t *count, const char *c)
 {
-	if (n > 9)
-		ft_putnbr(n / 10);
-	write(1, &"0123456789"[n % 10], 1);
-}
-int main()
-{
-	int i = 1;
-	while (i <= 100)
+	char	digits;
+
+	if (n >= 16)
 	{
-		if (i % 3 == 0 || i % 5 == 0)
-			write(1, "fizzbuzz", 8);
-		else if (i % 3 == 0)
-			write(1, "fizz", 4);
-		else if (i % 5 == 0)
-			write(1, "buzz", 4);
-		else
-			ft_putnbr(i++);
-		i++;
-		write(1, "\n", 1);
+		ft_puthexa_printf(n / 16, count, c);
 	}
-	
-	return (0);
+	digits = c[(n % 16)];
+	write(1, &digits, 1);
+	(*count)++;
 }

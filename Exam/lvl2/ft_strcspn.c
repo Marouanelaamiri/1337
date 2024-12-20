@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:09:01 by malaamir          #+#    #+#             */
-/*   Updated: 2024/12/17 18:06:22 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/12/17 21:57:10 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ size_t ft_strcspn(const char *s, const char *reject)
 int main()
 {
 	const char *s = "Hello World";
-	const char *reject = "d";
+	const char *reject = "dft";
 	printf("%zu\n", ft_strcspn(s, reject));
 	return 0;
 }
