@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 19:34:50 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/26 20:10:44 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/28 09:58:45 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,10 @@ char	*read_from_file(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffers[FD_SETSIZE];
+	static char	*buffers[10240];
 	char		*line;
 
-	if (fd < 0 || fd >= FD_SETSIZE || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || fd >= 10240 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (free(buffers[fd]), buffers[fd] = NULL, NULL);
 	buffers[fd] = read_from_file(fd, buffers[fd]);
 	if (!buffers[fd])

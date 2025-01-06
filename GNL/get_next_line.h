@@ -6,12 +6,14 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 13:28:18 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/26 12:15:20 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:36:51 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
+
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024

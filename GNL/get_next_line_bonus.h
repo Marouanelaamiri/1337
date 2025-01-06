@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 19:36:15 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/26 20:03:11 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/11/28 17:36:01 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 # define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1024
 # endif
 
-# include <sys/select.h>
 # include <unistd.h>
 # include <stdlib.h>
 

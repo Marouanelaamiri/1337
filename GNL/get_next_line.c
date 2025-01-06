@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 13:28:24 by malaamir          #+#    #+#             */
-/*   Updated: 2024/11/26 12:27:19 by malaamir         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:44:26 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*get_remaning(char *buffer)
 		free(buffer);
 		return (NULL);
 	}
-	line = malloc(ft_strlen(buffer) - i + 1);
+	line = malloc(ft_strlen(buffer) - i + 1);// lseek
 	if (!line)
 		return (free (buffer), NULL);
 	i++;
