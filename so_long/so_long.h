@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:06:06 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/08 18:51:08 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/09 22:08:46 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # endif
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 20
+#  define BUFFER_SIZE 1
 # endif
 
 # include "mlx.h"
@@ -43,7 +43,7 @@ typedef struct s_map {
     int		player_x;
     int		player_y;
     int		collectibles;
-	int		movments;
+	int		movements;
 } t_map;
 
 void	free_map(t_map *map);
@@ -71,5 +71,14 @@ int		ft_printf(const char *format, ...);
 void	ft_putchar_printf(char c, size_t *count);
 void	ft_putstr_printf(char *s, size_t *count);
 void	ft_putnbr_printf(int nbr, size_t *count);
-
+int		ft_strcmp(const char *s1, const char *s2);
+void	load_images(t_map *map);
+int		check_map_extension(const char *file_path);
+void    display_error(const char *msg);
+void    init_player_pos(t_map *map);
+void	init_game(int ac, char **av, t_map *map);
+int		check_path(t_map *map);
+int		check_player_and_exit(t_map *map);
+void	free_visited(int **visited, t_map *map);
+// void	free_struc(t_map *map);
 #endif

@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:37:07 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/08 18:06:30 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/09 21:39:59 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_player_and_exit(t_map *map)
 		i++;
 	}
 	if (player != 1 || exit != 1)
-		return (0);
+		return (0); 
 	return (1);
 }
 int	check_walls(t_map *map)
@@ -44,10 +44,10 @@ int	check_walls(t_map *map)
 	int i;
 	int j;
 
+	i = 0;
 	j = 0;
 	while(j < map->width)
 	{
-		i = 0;
 		if (map->data[i][j] != '1' || map->data[map->height - 1][j] != '1')
 			return (0);
 		j++;
@@ -76,9 +76,19 @@ int check_map_shape(t_map *map)
 	}
 	return (1);
 }
-t_map	*init_map(const char *file_path)
+int check_map_extension(const char *file_path)
 {
-	 int fd = open(file_path, O_RDONLY);
+	size_t len = ft_strlen(file_path);
+	if (len < 4)
+		return (0);
+	 if (ft_strcmp(file_path + len - 4, ".ber") == 0)
+        return 1;
+
+    return 0;
+}
+t_map	*read_map(const char *file_path)
+{
+    int fd = open(file_path, O_RDONLY);
     if (fd == -1)
         display_error("Error: failed to open the map file\n");
     t_map *map = malloc(sizeof(t_map));
@@ -87,17 +97,9 @@ t_map	*init_map(const char *file_path)
     map->data = malloc(sizeof(char *) * 100);
     if (!map->data)
         display_error("Error: failed to allocate memory for the map data\n");
-	return (map);
-}
-t_map	*read_map(const char *file_path)
-{
-	t_map *map = init_map(file_path);
-	
     char *line;
     int i;
-	int fd;
-	
-	fd = open(file_path, O_RDONLY);
+
 	i = 0;
     while ((line = get_next_line(fd)))
     {
@@ -105,15 +107,13 @@ t_map	*read_map(const char *file_path)
         if (line[len - 1] == '\n')
             line[len - 1] = '\0';  // remove the newline character
         if (i == 0)
-            map->width = ft_strlen(line);
-        map->data[i] = line;
+			map->width = ft_strlen(line);
+        	map->data[i] = line;
         i++;
     }
     map->height = i;
     map->data[i] = NULL;
     close(fd);
-    if (!check_walls(map))
-        display_error("Error: map is not surrounded by walls\n");
 	if (!check_map_shape(map))
 		display_error("Error: invalid map shape\n");
 	if (!check_player_and_exit(map))

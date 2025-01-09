@@ -6,12 +6,11 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:38:56 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/08 18:57:47 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/08 21:00:24 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 static void	ckeck_format(const char *str, va_list args, size_t *count)
 {
@@ -39,7 +38,7 @@ int	ft_printf(const char *format, ...)
 	while (*str)
 	{
 		if (*str != '%')
-			ft_putchar_printf(*str++, &count);// %%%l
+			ft_putchar_printf(*str++, &count);
 		else
 		{
 			str++;
