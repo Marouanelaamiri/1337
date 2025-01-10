@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:38:32 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/09 21:20:43 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:02:08 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void flood_fill(int x, int y, t_map *map, int **visited)
 
     visited[y][x] = 1;
 
-    flood_fill(x + 1, y, map, visited);  // Right
-    flood_fill(x - 1, y, map, visited);  // Left
-    flood_fill(x, y + 1, map, visited);  // Down
-    flood_fill(x, y - 1, map, visited);  // Up
+    flood_fill(x + 1, y, map, visited); // right
+    flood_fill(x - 1, y, map, visited);// left
+    flood_fill(x, y + 1, map, visited); // down
+    flood_fill(x, y - 1, map, visited); // up
 }
-int **initialize_visited(t_map *map)
+int **init_visited(t_map *map)
 {
     int **visited;
     int i;
@@ -35,7 +35,7 @@ int **initialize_visited(t_map *map)
 
     visited = malloc(map->height * sizeof(int *));
     if (!visited)
-        return NULL;
+        return (NULL);
 
     i = 0;
     while (i < map->height)
@@ -44,15 +44,15 @@ int **initialize_visited(t_map *map)
         if (!visited[i])
         {
             free_visited(visited, map);
-            return NULL;
+            return (NULL);
         }
         j = 0;
         while (j < map->width)
-            visited[i][j++] = 0;  // Mark all cells as unvisited
+            visited[i][j++] = 0;
         i++;
     }
     flood_fill(map->player_x, map->player_y, map, visited);
-    return visited;
+    return (visited);
 }
 int	check_path(t_map *map)
 {
@@ -61,9 +61,9 @@ int	check_path(t_map *map)
 	int j;
 
     i = 0;
-	visited = initialize_visited(map);
+	visited = init_visited(map);
     if (!visited)
-        return 0;
+        return (0);
     while (i < map->height)
 	{
         j = 0;
@@ -72,12 +72,12 @@ int	check_path(t_map *map)
             if ((map->data[i][j] == 'C' || map->data[i][j] == 'E') && !visited[i][j])
 			{
                 free_visited(visited, map);
-                return 0;
+                return (0);
             }
             j++;
         }
         i++;
     }
     free_visited(visited, map);
-    return 1;
+    return (1);
 }

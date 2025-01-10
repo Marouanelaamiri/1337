@@ -6,18 +6,18 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:06:06 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/09 22:08:46 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/10 17:32:05 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SO_LONG_H
+#ifndef SO_LONG_H
 # define SO_LONG_H
 
 # ifndef TILE_SIZE
 # define TILE_SIZE 75
 # endif
 
-# ifndef BUFFER_SIZE
+#ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
 
@@ -80,5 +80,8 @@ void	init_game(int ac, char **av, t_map *map);
 int		check_path(t_map *map);
 int		check_player_and_exit(t_map *map);
 void	free_visited(int **visited, t_map *map);
-// void	free_struc(t_map *map);
+void	put_image(t_map *map,int x, int y, void *img);
+void	validate_map(t_map *map);
+int		check_collectibles(t_map *map);
+
 #endif

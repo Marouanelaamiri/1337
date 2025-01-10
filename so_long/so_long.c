@@ -6,23 +6,21 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 22:24:30 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/09 22:08:41 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:30:52 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void f(void)
-{
-	system("leaks so_long");
-}
+// void f(void)
+// {
+// 	system("leaks so_long");
+// }
 
 int main(int ac, char **av)
 {
+	// atexit(f);
     t_map map;
 
-	atexit(f);
-    // Pass the map file path directly to init_game
     init_game(ac, av ,&map);
 
 	if (!check_path(&map))
@@ -30,14 +28,11 @@ int main(int ac, char **av)
 		display_error("Error: invalid map path\n");
 		return (1);
 	}
-
     load_images(&map);   
-    draw_map(map);              // Draw the map
-
-    mlx_key_hook(map.win, key_hook, &map); // Set the key hook
-    mlx_hook(map.win, 17, 0, close_window, &map); // Set the close window hook
-    mlx_loop(map.mlx);          // Start the game loop
-
+    draw_map(map);
+    mlx_key_hook(map.win, key_hook, &map);
+    mlx_hook(map.win, 17, 0, close_window, &map);
+    mlx_loop(map.mlx);
     free_map(&map);
     destroy_images(&map);
     return 0;

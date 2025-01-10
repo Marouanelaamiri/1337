@@ -6,19 +6,41 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:37:07 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/09 21:39:59 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:48:00 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+int check_collectibles(t_map *map)
+{
+    int collectible;
+    int i;
+    int j;
 
+    collectible = 0;
+    i = 0;
+    while (i < map->height)
+    {
+        j = 0;
+        while (j < map->width)
+        {
+            if (map->data[i][j] == 'C') 
+                collectible++;
+            j++;
+        }
+        i++;
+    }
+    if (collectible > 0)
+        return (1);
+    return (0);
+}
 int	check_player_and_exit(t_map *map)
 {
 	int player;
 	int exit;
 	int i;
 	int j;
-
+	
 	player = 0;
 	exit = 0;
 	i = 0;
@@ -86,37 +108,4 @@ int check_map_extension(const char *file_path)
 
     return 0;
 }
-t_map	*read_map(const char *file_path)
-{
-    int fd = open(file_path, O_RDONLY);
-    if (fd == -1)
-        display_error("Error: failed to open the map file\n");
-    t_map *map = malloc(sizeof(t_map));
-    if (!map)
-        display_error("Error: failed to allocate memory for the map\n");
-    map->data = malloc(sizeof(char *) * 100);
-    if (!map->data)
-        display_error("Error: failed to allocate memory for the map data\n");
-    char *line;
-    int i;
 
-	i = 0;
-    while ((line = get_next_line(fd)))
-    {
-        size_t len = ft_strlen(line);
-        if (line[len - 1] == '\n')
-            line[len - 1] = '\0';  // remove the newline character
-        if (i == 0)
-			map->width = ft_strlen(line);
-        	map->data[i] = line;
-        i++;
-    }
-    map->height = i;
-    map->data[i] = NULL;
-    close(fd);
-	if (!check_map_shape(map))
-		display_error("Error: invalid map shape\n");
-	if (!check_player_and_exit(map))
-		display_error("Error: invalid player or exit\n");
-    return map;
-}

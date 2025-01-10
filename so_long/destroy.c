@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:12:21 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/09 22:09:21 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:40:39 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void free_visited(int **visited, t_map *map)
     int i;
 
     if (!visited)
-        return; // Avoid freeing a NULL pointer
+        return;
 
     i = 0;
     while (i < map->height)
@@ -56,7 +56,6 @@ void    destroy_images(t_map *map)
 	mlx_destroy_image(map->mlx, map->img_exit);
 	mlx_destroy_image(map->mlx, map->img_collectible);
 	mlx_destroy_image(map->mlx, map->img_player);
-	
 }
 int	close_window(t_map *map)
 {
