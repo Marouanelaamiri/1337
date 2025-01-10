@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 20:26:17 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/08 20:28:46 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:06:08 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	while(*s1 && *s2 && *s1 == *s2)
+	while (*s1 && *s2 && *s1 == *s2)
 	{
 		s1++;
 		s2++;

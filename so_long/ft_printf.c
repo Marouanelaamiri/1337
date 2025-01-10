@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:38:56 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/08 21:00:24 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:05:34 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-

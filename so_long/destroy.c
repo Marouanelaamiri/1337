@@ -6,50 +6,51 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:12:21 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/10 11:40:39 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:05:18 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    display_error(const char *msg)
+void	display_error(const char *msg)
 {
-    write(2, msg, ft_strlen(msg));
-    exit(1);
+	write(2, msg, ft_strlen(msg));
+	exit(1);
 }
-void free_map(t_map *map)
+
+void	free_map(t_map *map)
 {
+	int	i;
+
 	if (!map)
-		return;
-		
-	int i;
-	
+		return ;
 	i = 0;
-    while (i < map->height)
-    {
-        free(map->data[i]);
+	while (i < map->height)
+	{
+		free(map->data[i]);
 		i++;
-    }
-    free(map->data);
-    free(map);
+	}
+	free(map->data);
+	free(map);
 }
-void free_visited(int **visited, t_map *map)
+
+void	free_visited(int **visited, t_map *map)
 {
-    int i;
+	int	i;
 
-    if (!visited)
-        return;
-
-    i = 0;
-    while (i < map->height)
-    {
-        if (visited[i])
-            free(visited[i]);
-        i++;
-    }
-    free(visited);
+	if (!visited)
+		return ;
+	i = 0;
+	while (i < map->height)
+	{
+		if (visited[i])
+			free(visited[i]);
+		i++;
+	}
+	free(visited);
 }
-void    destroy_images(t_map *map)
+
+void	destroy_images(t_map *map)
 {
 	mlx_destroy_image(map->mlx, map->img_floor);
 	mlx_destroy_image(map->mlx, map->img_wall);
@@ -57,6 +58,7 @@ void    destroy_images(t_map *map)
 	mlx_destroy_image(map->mlx, map->img_collectible);
 	mlx_destroy_image(map->mlx, map->img_player);
 }
+
 int	close_window(t_map *map)
 {
 	destroy_images(map);
