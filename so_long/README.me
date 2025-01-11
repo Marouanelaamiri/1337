@@ -1,0 +1,71 @@
+what is Minilibx 
+its a small graphic library designed for use with X Windows System, which is commonly found on Unix-like OS.
+it's used in educational settings .
+Key Features :
+
+Simple API : API is (application programming interface)it provides a straightforward and minimal set of functions to create windows, draw shapes , and 
+handle events like keyboards and mouse inputs , in other words the the remote controller that we use to interact
+with the graphical interface.
+2D Graphics :
+its used for 2d graphic , making it suitable for simple projects like the one im working on "so_long"
+Event Handling :
+it allows you to capture and respond to user inputs , like key presses "in this project WSDA" and mouse movements
+Cross-Platform :
+while its designed for unix-like OS it can work on MacOS with some tweaks.
+
+Basic Workflow of minilibx :
+
+1- Init the library : Set up the minilibx environment.
+2- Create a window : Open a window where graphics will be drawn.
+3- Draw graphics : Use functions to draw pixels , lines , and shapes.
+4- Handle events : Capture and respond to user inputs.
+5- Close the window : clean up and close window when done.
+
+
+What is X Window System : 
+its a framework for managing graphical user interface (GUI) on Unix-like os , it provides the basic building blocks
+for creating and managing windows on your screen.
+
+Key Concepts :
+
+1- Server-client model : 
+X Server : the server runs on ur computer and manages the display, keyboard and mouse, tit handles drawing windows and
+graphics on the screen.
+X Clients : these are applications that request the X server to create windows and draw graphics, like web browser
+text editors , and terminal emulators.
+
+2- Windows : 
+a window is a rectangular area on the screen where an application can display its interface. the X server manages these 
+windows, allowing them to be moved, resized, and closed.
+
+3- Protocols and communication:
+the X server and x clients communicate using X protocol. this protocol defines how clients can request the server to perform actions like
+drawing shapes , handling input events ,and managing windows.
+
+4- Window Manager:
+a window manager is a special type of X client that controls the placement and appearance of windows , it provides 
+features like window boarders, title bars, and the ability to move and resize windows.
+
+How it works :
+
+When you start an application (X client), it sends requests to the X Server to create a window and draw its interface.
+the X server processes these requests and update the display accordingly.
+the window manager helps organize and manage these windows, providing a user-friendly way to interact with them.
+
+Example :
+
+Imagine you open a web browser on linux desktop, here is what happens :
+
+1- the web browser (X client) sends a request to the X server to create a window.
+2- the X server creates the window and display it on the screen.
+3- the web browser sends more requests to draw buttons, text, and images inside the window.
+4- the X server processes these requests and updates the window's content.
+5- the window manager allows you to move, resize , and close the web browser window.
+
+Summary :
+
+The X Window System is a foundational technology that enables graphical applications to display their interfaces on Unix-like operating systems.
+It uses a server-client model to manage windows and handle user input, providing a flexible and powerful environment for building GUIs.
+
+
+
