@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:06:06 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/11 20:24:58 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/11 20:55:50 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # ifndef TILE_SIZE
 #  define TILE_SIZE 75
@@ -34,6 +34,7 @@ typedef struct s_map
 	void	*img_floor;
 	void	*img_wall;
 	void	*img_exit;
+	void	*img_new_exit;
 	void	*img_collectible;
 	void	*img_player;
 	int		img_width;
@@ -84,5 +85,7 @@ void	free_visited(int **visited, t_map *map);
 void	put_image(t_map *map, int x, int y, void *img);
 void	validate_map(t_map *map);
 int		check_collectibles(t_map *map);
+void	display_movements(t_map *map);
+char	*ft_itoa(int n);
 
 #endif

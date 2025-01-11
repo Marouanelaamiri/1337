@@ -6,7 +6,7 @@
 #    By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 12:41:09 by malaamir          #+#    #+#              #
-#    Updated: 2025/01/10 20:01:50 by malaamir         ###   ########.fr        #
+#    Updated: 2025/01/11 20:55:12 by malaamir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ SO_LONG_SRC = mand/so_long.c mand/destroy.c mand/get_next_line.c mand/get_next_l
 	mand/ft_putstr_printf.c mand/ft_putnbr_printf.c  mand/ft_strcmp.c  mand/init_game.c mand/check_path.c \
 	mand/read_map.c
 
-SO_LONG_BONUS_SRC =
+SO_LONG_BONUS_SRC = bonus/check_path_bonus.c bonus/destroy_bonus.c bonus/get_next_line_bonus.c bonus/get_next_line_utils_bonus.c \
+	bonus/init_game_bonus.c bonus/key_hooks_bonus.c bonus/parsing_map_bonus.c bonus/render_map_bonus.c bonus/so_long_bonus.c \
+	bonus/ft_printf_bonus.c bonus/ft_putchar_printf_bonus.c bonus/ft_putstr_printf_bonus.c bonus/ft_putnbr_printf_bonus.c \
+	bonus/ft_strcmp_bonus.c bonus/read_map_bonus.c bonus/ft_itoa_bonus.c bonus/display_movements_bonus.c\
 
 #-------------------------------Object Files-----------------------------------#
 SO_LONG_OBJ = $(SO_LONG_SRC:.c=.o)

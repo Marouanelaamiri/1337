@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hooks.c                                        :+:      :+:    :+:   */
+/*   key_hooks_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:01:29 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/11 20:24:48 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/11 20:47:44 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	remaining_collectible(t_map *map, int new_x, int new_y)
 {
@@ -49,10 +49,11 @@ int	move_player(t_map *map, int new_x, int new_y)
 	map->player_x = new_x;
 	map->player_y = new_y;
 	if (map->data[new_y][new_x] == 'E')
-	{
 		put_image(map, new_x, new_y, map->img_exit);
-	}
-	put_image(map, new_x, new_y, map->img_player);
+	else
+		put_image(map, new_x, new_y, map->img_player);
+	map->movements++;
+	display_movements(map);
 	return (1);
 }
 
@@ -75,11 +76,7 @@ static int	process_key(int keycode, t_map *map)
 	{
 		if (map->data[new_y][new_x] != '1' && map->data[new_y][new_x] != '\0')
 		{
-			if (move_player(map, new_x, new_y))
-			{
-				map->movements++;
-				ft_printf("Movements: %d\n", map->movements);
-			}
+			move_player(map, new_x, new_y);
 		}
 	}
 	return (0);

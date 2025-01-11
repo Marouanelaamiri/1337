@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_map.c                                       :+:      :+:    :+:   */
+/*   render_map_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:58:41 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/11 17:20:33 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/11 20:53:11 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	load_images(t_map *map)
 {
@@ -55,8 +55,6 @@ void	draw_map(t_map *map)
 			put_image(map, x, y, map->img_floor);
 			if (map->data[y][x] == '1')
 				put_image(map, x, y, map->img_wall);
-			else if (map->data[y][x] == 'P')
-				put_image(map, x, y, map->img_player);
 			else if (map->data[y][x] == 'E')
 				put_image(map, x, y, map->img_exit);
 			else if (map->data[y][x] == 'C')
@@ -65,4 +63,5 @@ void	draw_map(t_map *map)
 		}
 		y++;
 	}
+	put_image(map, map->player_x, map->player_y, map->img_player);
 }
