@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:01:29 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/11 20:47:44 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/12 13:40:50 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ int	move_player(t_map *map, int new_x, int new_y)
 {
 	if (map->data[new_y][new_x] == '1')
 		return (0);
+	if (map->data[new_y][new_x] == 'X')
+	{
+		write(1, "You touched a ghost, you lose!\n", 30);
+		exit(0);
+	}
 	if (!check_exit(map, new_x, new_y))
 		return (0);
 	remaining_collectible(map, new_x, new_y);
@@ -52,7 +57,6 @@ int	move_player(t_map *map, int new_x, int new_y)
 		put_image(map, new_x, new_y, map->img_exit);
 	else
 		put_image(map, new_x, new_y, map->img_player);
-	map->movements++;
 	display_movements(map);
 	return (1);
 }
@@ -76,7 +80,11 @@ static int	process_key(int keycode, t_map *map)
 	{
 		if (map->data[new_y][new_x] != '1' && map->data[new_y][new_x] != '\0')
 		{
-			move_player(map, new_x, new_y);
+			if (move_player(map, new_x, new_y))
+			{
+				map->movements++;
+				display_movements(map);
+			}
 		}
 	}
 	return (0);

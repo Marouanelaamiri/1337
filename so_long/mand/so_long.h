@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:06:06 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/11 20:24:58 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/12 13:29:59 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	free_visited(int **visited, t_map *map);
 void	put_image(t_map *map, int x, int y, void *img);
 void	validate_map(t_map *map);
 int		check_collectibles(t_map *map);
+void	check_unknown_characters(t_map *map);
 
 #endif

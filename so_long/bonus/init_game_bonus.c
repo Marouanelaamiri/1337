@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:44:15 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/11 20:55:36 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/12 15:11:54 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,28 @@ void	init_game(int ac, char **av, t_map *map)
 	if (!map->win)
 		display_error("Error: failed to create window\n");
 	init_player_pos(map);
+}
+
+void	check_unknown_characters(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			if (map->data[i][j] != '1' && map->data[i][j] != '0' &&
+				map->data[i][j] != 'P' && map->data[i][j] != 'E' &&
+				map->data[i][j] != 'C' && map->data[i][j] != 'X')
+			{
+				display_error("Error: invalid map character\n");
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
 }

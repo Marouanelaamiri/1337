@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:38:32 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/11 19:07:21 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/12 12:53:59 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	flood_fill(int x, int y, t_map *map, int **visited)
 {
 	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
 		return ;
-	if (visited[y][x] || map->data[y][x] == '1')
+	if (visited[y][x] || map->data[y][x] == '1' || map->data[y][x] == 'X')
 		return ;
 	visited[y][x] = 1;
 	flood_fill(x + 1, y, map, visited);

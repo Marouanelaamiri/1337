@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 22:24:30 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/11 17:32:32 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:59:46 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	main(int ac, char **av)
 		display_error("Error: failed to allocate memory\n");
 		return (1);
 	}
+	map->movements = 0;
 	init_game(ac, av, map);
+	check_unknown_characters(map);
 	if (!check_path(map))
 	{
 		display_error("Error: invalid map path\n");

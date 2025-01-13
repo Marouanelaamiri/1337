@@ -6,19 +6,21 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:37:07 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/11 19:12:52 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/12 13:07:43 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-int	check_collectibles(t_map *map)
+int	check_collectibles_and_enemy(t_map *map)
 {
 	int	collectible;
+	int	enemy;
 	int	i;
 	int	j;
 
 	collectible = 0;
+	enemy = 0;
 	i = 0;
 	while (i < map->height)
 	{
@@ -27,12 +29,15 @@ int	check_collectibles(t_map *map)
 		{
 			if (map->data[i][j] == 'C')
 				collectible++;
+			if (map->data[i][j] == 'X')
+				enemy++;
 			j++;
 		}
 		i++;
 	}
-	if (collectible > 0)
+	if (collectible > 0 && enemy > 0)
 		return (1);
+	display_error("Error: There must be at least one enemy\n");
 	return (0);
 }
 

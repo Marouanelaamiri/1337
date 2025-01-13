@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:06:06 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/11 20:55:50 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/12 13:44:45 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ typedef struct s_map
 	void	*img_floor;
 	void	*img_wall;
 	void	*img_exit;
-	void	*img_new_exit;
+	void	*img_exit_open;
 	void	*img_collectible;
 	void	*img_player;
+	void	*img_enemy;
 	int		img_width;
 	int		img_height;
 	int		width;
@@ -84,8 +85,9 @@ int		check_player_and_exit(t_map *map);
 void	free_visited(int **visited, t_map *map);
 void	put_image(t_map *map, int x, int y, void *img);
 void	validate_map(t_map *map);
-int		check_collectibles(t_map *map);
+int		check_collectibles_and_enemy(t_map *map);
 void	display_movements(t_map *map);
 char	*ft_itoa(int n);
+void	check_unknown_characters(t_map *map);
 
 #endif

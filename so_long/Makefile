@@ -6,7 +6,7 @@
 #    By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 12:41:09 by malaamir          #+#    #+#              #
-#    Updated: 2025/01/11 20:55:12 by malaamir         ###   ########.fr        #
+#    Updated: 2025/01/12 13:19:12 by malaamir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SO_LONG_BONUS_OBJ = $(SO_LONG_BONUS_SRC:.c=.o)
 CC = cc
 AR = ar
 RM = rm -f
-FLAGS = -Wall -Wextra -Werror -Imlx 
+FLAGS = -Wall -Wextra -Werror -Imlx
 
 #---------------------------Includes and Excutables----------------------------#
 INCLUDES = mand/so_long.h
@@ -41,10 +41,11 @@ BONUS_NAME = so_long_bonus
 #---------------------------------Rules----------------------------------------#
 all: $(MANDATORY_NAME)
 
+bonus : $(BONUS_NAME)
+
 $(MANDATORY_NAME): $(SO_LONG_OBJ)
 	$(CC) $(FLAGS) $(SO_LONG_OBJ) -lmlx -framework OpenGL -framework AppKit -o $(MANDATORY_NAME)
 
-bonus : $(BONUS_NAME)
 
 $(BONUS_NAME): $(SO_LONG_BONUS_OBJ)
 	$(CC) $(FLAGS) $(SO_LONG_BONUS_OBJ) -lmlx -framework OpenGL -framework AppKit -o $(BONUS_NAME)

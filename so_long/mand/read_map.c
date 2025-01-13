@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:39:51 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/11 16:23:42 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/12 12:50:33 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,16 @@ static void	read_map_data(int fd, t_map *map)
 		i++;
 	}
 	map->height = i;
+	if (map->height == 0)
+	{
+		close(fd);
+		display_error("Error: empty map\n");
+	}
 	if (map->height > 19 || ft_strlen(map->data[0]) > 34)
+	{
+		close(fd);
 		display_error("Error: map too big\n");
+	}
 	map->data[i] = NULL;
 }
 
@@ -58,10 +66,16 @@ t_map	*read_map(const char *file_path)
 		display_error("Error: failed to open the map file\n");
 	map = malloc(sizeof(t_map));
 	if (!map)
+	{
+		close(fd);
 		display_error("Error: failed to allocate memory for the map\n");
+	}
 	map->data = malloc(sizeof(char *) * 100);
 	if (!map->data)
+	{
+		close(fd);
 		display_error("Error: failed to allocate memory for the map data\n");
+	}
 	read_map_data(fd, map);
 	close(fd);
 	validate_map(map);
