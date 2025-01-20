@@ -28,13 +28,12 @@ SO_LONG_BONUS_OBJ = $(SO_LONG_BONUS_SRC:.c=.o)
 
 #-------------------------------Compiler and flags-----------------------------#
 CC = cc
-AR = ar
 RM = rm -f
 FLAGS = -Wall -Wextra -Werror -Imlx
 
 #---------------------------Includes and Excutables----------------------------#
 INCLUDES = mand/so_long.h
-BONUS_INCLUDES = so_long_bonus.h
+BONUS_INCLUDES = bonus/so_long_bonus.h
 MANDATORY_NAME = so_long
 BONUS_NAME = so_long_bonus
 
@@ -64,5 +63,3 @@ fclean: clean
 	$(RM) $(MANDATORY_NAME) $(BONUS_NAME)
 #---------------------------------Rebuilding------------------------------------#
 re: fclean all
-
-.PHONY: all clean fclean re bonus
