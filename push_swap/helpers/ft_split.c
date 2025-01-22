@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 16:33:09 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/19 19:32:27 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:26:24 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ static int	count_words(char *s, char c)
 	bool	inside_word;
 
 	count = 0;
+	if (!s)
+		return (0);
+
 	while (*s)
 	{
 		inside_word = false;
@@ -42,9 +45,9 @@ static char	*get_next_word(char *s, char c)
 	char		*next_word;
 	int			len;
 	int			i;
-
 	len = 0;
 	i = 0;
+	
 	while (s[cursor] == c)
 		++cursor;
 	while ((s[cursor + len] != c) && s[cursor + len])
@@ -65,7 +68,11 @@ char **split(char *s, char c)
 	int		i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	words_count = count_words(s, c);
+	if (words_count == 0)
+		return (NULL);
 	if (!words_count)
 		exit(1);
 	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));

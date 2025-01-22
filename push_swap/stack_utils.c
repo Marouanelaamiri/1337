@@ -6,13 +6,13 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:34 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/19 19:45:17 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 18:24:46 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_len(t_stack_node *stack) 
+int	len_of_stack(t_stack_node *stack) 
 {
 	int	count;
 
@@ -36,7 +36,7 @@ t_stack_node	*find_last(t_stack_node *stack)
 	return (stack);
 }
 
-bool	stack_sorted(t_stack_node *stack)
+bool	is_stack_sorted(t_stack_node *stack)
 {
 	if (!stack)
 		return (1);

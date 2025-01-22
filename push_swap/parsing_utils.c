@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_errors.c                                    :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:01 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/20 13:26:08 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:10:29 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,14 @@ void	free_stack(t_stack_node **stack)
 	current = *stack;
 	while (current)
 	{
-		tmp = current->next; 
-		current->nbr = 0;
+		tmp = current->next;
 		free(current);
 		current = tmp;
 	}
 	*stack = NULL;
 }
 
-void	free_errors(t_stack_node **a)
+void	display_errors(t_stack_node **a)
 {
 	free_stack(a);
 	write(1,"Error\n", 6);
