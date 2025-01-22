@@ -6,13 +6,13 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:34 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/22 18:24:46 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 21:02:24 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	len_of_stack(t_stack_node *stack) 
+int	len_of_stack(t_stack *stack) 
 {
 	int	count;
 
@@ -27,7 +27,7 @@ int	len_of_stack(t_stack_node *stack)
 	return (count);
 }
 
-t_stack_node	*find_last(t_stack_node *stack)
+t_stack	*find_last(t_stack *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -36,32 +36,32 @@ t_stack_node	*find_last(t_stack_node *stack)
 	return (stack);
 }
 
-bool	is_stack_sorted(t_stack_node *stack)
+bool	is_stack_sorted(t_stack *stack)
 {
 	if (!stack)
 		return (1);
 	while (stack->next)
 	{
-		if (stack->nbr > stack->next->nbr)
+		if (stack->data > stack->next->data)
 			return (false);
 		stack = stack->next;
 	}
 	return (true);
 }
 
-t_stack_node	*find_min(t_stack_node *stack)
+t_stack	*find_min(t_stack *stack)
 {
-	long			min;
-	t_stack_node	*min_node;
+	long	min;
+	t_stack	*min_node;
 
 	if (!stack)
 		return (NULL);
 	min = LONG_MAX;
 	while (stack)
 	{
-		if (stack->nbr < min)
+		if (stack->data < min)
 		{
-			min = stack->nbr;
+			min = stack->data;
 			min_node = stack;
 		}
 		stack = stack->next;
@@ -69,19 +69,19 @@ t_stack_node	*find_min(t_stack_node *stack)
 	return (min_node); 
 }
 
-t_stack_node	*find_max(t_stack_node *stack)
+t_stack	*find_max(t_stack *stack)
 {
-	long			max;
-	t_stack_node	*max_node;
+	long	max;
+	t_stack	*max_node;
 
 	if (!stack)
 		return (NULL);
 	max = LONG_MIN;
 	while (stack)
 	{
-		if (stack->nbr > max)
+		if (stack->data > max)
 		{
-			max = stack->nbr;
+			max = stack->data;
 			max_node = stack;
 		}
 		stack = stack->next;

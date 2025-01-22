@@ -6,15 +6,15 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:15 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/20 15:12:53 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:58:31 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack_node **a, t_stack_node **b)
+void	pa(t_stack **a, t_stack **b)
 {
-	t_stack_node	*tmp;
+	t_stack	*tmp;
 	
 	if (!*b) // if stack b is empty we return
 		return ;
@@ -29,9 +29,9 @@ void	pa(t_stack_node **a, t_stack_node **b)
 	write(1, "pa\n", 3);
 }
 
-void	pb(t_stack_node **b, t_stack_node **a)
+void	pb(t_stack **b, t_stack **a)
 {
-	t_stack_node	*tmp;
+	t_stack	*tmp;
 
 	if (!*a)
 		return ;

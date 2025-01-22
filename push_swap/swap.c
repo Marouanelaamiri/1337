@@ -6,17 +6,17 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:36 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/20 15:11:23 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 21:02:47 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_stack_node **head)
+static void	swap(t_stack **head)
 {
 	
-    t_stack_node *old_head;
-    t_stack_node *new_head;
+    t_stack *old_head;
+    t_stack *new_head;
 
     if (!head || !(*head) || !(*head)->next)
         return; //if the stack is empty or has only one node, there is no need to swap
@@ -32,19 +32,19 @@ static void	swap(t_stack_node **head)
     old_head->prev = new_head; // and we set the previous node of the old head to the new head
 }
 
-void	sa(t_stack_node	**a)
+void	sa(t_stack	**a)
 {
 	swap(a);
 	write(1, "sa\n", 3);
 }
 
-void	sb(t_stack_node **b)
+void	sb(t_stack **b)
 {
 	swap(b);
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_stack_node **a, t_stack_node **b)
+void	ss(t_stack **a, t_stack **b)
 {
 	swap(a);
 	swap(b);

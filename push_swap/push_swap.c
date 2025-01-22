@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:10 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/22 20:33:58 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:58:07 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void free_split(char **split_result)
 
 int	main(int argc, char **argv)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
+	t_stack	*a;
+	t_stack	*b;
 	char			**split_result;
 
 	a = NULL;

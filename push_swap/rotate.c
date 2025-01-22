@@ -6,16 +6,16 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:21 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/20 20:57:41 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:59:18 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void rotate(t_stack_node **stack)
+void rotate(t_stack **stack)
 {
-    t_stack_node *last_node;
-    t_stack_node *first_node;
+    t_stack *last_node;
+    t_stack *first_node;
 
     if (!stack || !*stack || !(*stack)->next)
         return ; // if the stack is empty or has only one node, there's no need to rotate
@@ -30,20 +30,20 @@ void rotate(t_stack_node **stack)
     first_node->next = NULL; // Set the first node's next pointer to NULL (it's now the last node)
 }
 
-void ra(t_stack_node **a)
+void ra(t_stack **a)
 {
 	rotate(a);
 	write(1, "ra\n", 3);
 }
 
-void	rb(t_stack_node **b)
+void	rb(t_stack **b)
 {
 	rotate(b);
 	write(1, "rb\n", 3);
 	
 }
 
-void	rr(t_stack_node **a, t_stack_node **b)
+void	rr(t_stack **a, t_stack **b)
 {
 	rotate(a);
 	rotate(b);

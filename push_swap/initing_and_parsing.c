@@ -6,24 +6,24 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:31 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/22 20:12:15 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:57:29 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_lstadd_back(t_stack_node **lst, int n) // this function adds a node to the end of a doubly linked list
+static void	ft_lstadd_back(t_stack **lst, int n) // this function adds a node to the end of a doubly linked list
 {
-	t_stack_node	*new_node;
-	t_stack_node	*last;
+	t_stack	*new_node;
+	t_stack	*last;
 
 	if (!lst)
 		return ;
-	new_node = malloc(sizeof(t_stack_node));
+	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		return ;
 	new_node->next = NULL;    // Set the next pointer to NULL
-	new_node->nbr = n;        // Assign the integer value to the new node
+	new_node->data = n;        // Assign the integer value to the new node
 	new_node->cheapest = 0;   // Set the cheapest flag to 0
 	if (!(*lst))
 	{
@@ -39,7 +39,7 @@ static void	ft_lstadd_back(t_stack_node **lst, int n) // this function adds a no
 }
 
 
-void	init_stack_a(t_stack_node **a, char **argv) // this function start the stack by converting args from cmd to ints and appending them to the stack
+void	init_stack_a(t_stack **a, char **argv) // this function start the stack by converting args from cmd to ints and appending them to the stack
 {
 	long	n;
 	int		i;
@@ -59,7 +59,7 @@ void	init_stack_a(t_stack_node **a, char **argv) // this function start the stac
 	}
 }
 
-t_stack_node	*look_for_cheapest(t_stack_node *stack) // this function looks for the node with the label cheapest and returns it
+t_stack	*look_for_cheapest(t_stack *stack) // this function looks for the node with the label cheapest and returns it
 {
 	if (!stack)
 		return (NULL);
@@ -72,20 +72,20 @@ t_stack_node	*look_for_cheapest(t_stack_node *stack) // this function looks for 
 	return (NULL); // if no node has the label cheapest, return NULL
 }
 
-void	get_ready_for_push(t_stack_node **stack, t_stack_node *top_node, char stack_name)
+void	get_ready_for_push(t_stack **stack, t_stack *top_node, char stack_name)
 {
 	while (*stack != top_node) // this function prepares the stack for pushing by rotating a node in the required stack , so it be in its favorable position
 	{
 		if (stack_name == 'a')
 		{
-			if (top_node->above_median) // if the node is above the median ra is used because the node is closer to the top
+			if (top_node->above_average) // if the node is above the median ra is used because the node is closer to the top
 				ra(stack);
 			else
 				rra(stack); // else rra is used because the node is closer to the bottom 
 		}
 		else if (stack_name == 'b')
 		{
-			if (top_node->above_median) // same applies here
+			if (top_node->above_average) // same applies here
 				rb(stack);
 			else
 				rrb(stack);

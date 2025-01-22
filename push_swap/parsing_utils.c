@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:01 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/22 20:10:29 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:57:59 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,23 @@ int	check_for_errors(char *str)
 	return (0);
 }
 
-int	check_for_dup(t_stack_node *a, int nbr)
+int	check_for_dup(t_stack *a, int nbr)
 {
 	if (!a)
 		return (0);
 	while (a)
 	{
-		if (a->nbr == nbr)
+		if (a->data == nbr)
 			return (1);
 		a = a->next;
 	}
 	return (0);
 }
 
-void	free_stack(t_stack_node **stack)
+void	free_stack(t_stack **stack)
 {
-	t_stack_node	*tmp;
-	t_stack_node	*current;
+	t_stack	*tmp;
+	t_stack	*current;
 
 	if (!stack)
 		return ;
@@ -64,7 +64,7 @@ void	free_stack(t_stack_node **stack)
 	*stack = NULL;
 }
 
-void	display_errors(t_stack_node **a)
+void	display_errors(t_stack **a)
 {
 	free_stack(a);
 	write(1,"Error\n", 6);

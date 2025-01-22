@@ -6,13 +6,13 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:19:39 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/22 18:27:20 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 21:01:05 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_stacks(t_stack_node **a, t_stack_node **b) // this function sorts the stacks 
+void	sort_stacks(t_stack **a, t_stack **b) // this function sorts the stacks 
 {
 	int	len_a;
 

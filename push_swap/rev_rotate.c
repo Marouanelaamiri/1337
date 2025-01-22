@@ -6,16 +6,16 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:17 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/20 21:24:42 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:58:56 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rev_rotate(t_stack_node **stack)
+static void	rev_rotate(t_stack **stack)
 {
-    t_stack_node *last; // store pointer to the last node
-    t_stack_node *second_last; // store pointer to the node before the last
+    t_stack *last; // store pointer to the last node
+    t_stack *second_last; // store pointer to the node before the last
 
     if (!stack || !*stack || !(*stack)->next)
         return ; // if the stack is empty or has only one node, there's no need to rotate
@@ -38,21 +38,21 @@ static void	rev_rotate(t_stack_node **stack)
     *stack = last; // the new head is now the previous last node
 }
 
-void	rra(t_stack_node **a)
+void	rra(t_stack **a)
 {
 	rev_rotate(a);
 
 		write(1,"rra\n", 4);
 }
 
-void	rrb(t_stack_node **b)
+void	rrb(t_stack **b)
 {
 	rev_rotate(b);
 
 	write (1,"rrb\n", 4);
 }
 
-void	rrr(t_stack_node **a, t_stack_node **b)
+void	rrr(t_stack **a, t_stack **b)
 {
 	rev_rotate(a);
 	rev_rotate(b);
