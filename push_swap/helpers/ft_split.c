@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 16:33:09 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/22 20:26:24 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:36:46 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,11 @@ static int	count_words(char *s, char c)
 	count = 0;
 	if (!s)
 		return (0);
-
 	while (*s)
 	{
 		inside_word = false;
 		while (*s == c)
-			++s; 
+			++s;
 		while (*s != c && *s)
 		{
 			if (!inside_word)
@@ -45,9 +44,9 @@ static char	*get_next_word(char *s, char c)
 	char		*next_word;
 	int			len;
 	int			i;
+
 	len = 0;
 	i = 0;
-	
 	while (s[cursor] == c)
 		++cursor;
 	while ((s[cursor + len] != c) && s[cursor + len])
@@ -61,34 +60,30 @@ static char	*get_next_word(char *s, char c)
 	return (next_word);
 }
 
-char **split(char *s, char c)
+char	**split(char *s, char c)
 {
 	int		words_count;
 	char	**result_array;
 	int		i;
 
-	i = 0;
 	if (!s)
 		return (NULL);
 	words_count = count_words(s, c);
-	if (words_count == 0)
+	if (words_count <= 0)
 		return (NULL);
-	if (!words_count)
-		exit(1);
 	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));
 	if (!result_array)
 		return (NULL);
-	while (words_count-- >= 0)
+	i = 0;
+	result_array[i] = malloc(sizeof(char));
+	if (!result_array[i])
+		return (NULL);
+	result_array[i++][0] = '\0';
+	while (words_count-- > 0)
 	{
-		if (i == 0)
-		{
-			result_array[i] = malloc(sizeof(char));
-			if (!result_array[i])
-				return (NULL);
-			result_array[i++][0] = '\0';
-			continue ;
-		}
-		result_array[i++] = get_next_word(s, c);
+		result_array[i] = get_next_word(s, c);
+		if (!result_array[i++])
+			return (NULL);
 	}
 	result_array[i] = NULL;
 	return (result_array);

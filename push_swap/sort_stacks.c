@@ -6,32 +6,32 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:19:39 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/22 21:01:05 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:56:18 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_stacks(t_stack **a, t_stack **b) // this function sorts the stacks 
+void	sort_stacks(t_stack **a, t_stack **b)
 {
 	int	len_a;
 
 	len_a = len_of_stack(*a);
-	if (len_a-- > 3 && !is_stack_sorted(*a)) // if the stack has more than 3 nodes and is not sorted
-		pb(b, a); // we push the first node to stack b 
-	if (len_a-- > 3 && !is_stack_sorted(*a)) // if the stack still has more than 3 nodes and is not sorted
-		pb(b, a); // we push the second node to stack b
-	while (len_a-- > 3 && !is_stack_sorted(*a)) // while the stack has more than 3 nodes and is not sorted 
+	if (len_a-- > 3 && !is_stack_sorted(*a))
+		pb(b, a);
+	if (len_a-- > 3 && !is_stack_sorted(*a))
+		pb(b, a);
+	while (len_a-- > 3 && !is_stack_sorted(*a))
 	{
-		init_nodes_a(*a, *b); // we initialize the nodes in stack a
-		move_a_to_b(a, b); // we move the cheapest node from stack a to stack b
+		init_nodes_a(*a, *b);
+		move_a_to_b(a, b);
 	}
-	sort_three(a); // we sort the remaining 3 nodes in stack a
-	while (*b) // while stack b is not empty
+	sort_three(a);
+	while (*b)
 	{
-		init_nodes_b(*a, *b); // we initialize the nodes in stack b
-		move_b_to_a(a, b); // we move the node from stack b to stack a
+		init_nodes_b(*a, *b);
+		move_b_to_a(a, b);
 	}
-	at_index(*a); // we update the index of the nodes in stack a
-	min_on_top(a); // we keep rotating the stack until the smallest number is on top
+	at_index(*a);
+	min_on_top(a);
 }

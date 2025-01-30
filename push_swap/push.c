@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:15 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/22 20:58:31 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:48:11 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	pa(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
-	
-	if (!*b) // if stack b is empty we return
+
+	if (!*b)
 		return ;
-	tmp = (*b)->next; // we set the tmp to the next node of the stack b
-	(*b)->next = *a; // we set the next node of the stack b to the stack a
-	*a = *b; // we set the stack a to the stack b
-	*b = tmp; // we set the stack b to the tmp
+	tmp = (*b)->next;
+	(*b)->next = *a;
+	*a = *b;
+	*b = tmp;
 	if (*b)
-		(*b)->prev = NULL; // if the stack b is not empty we set the previous node of the stack b to NULL
+		(*b)->prev = NULL;
 	if (*a)
-		(*a)->prev = NULL; // if the stack a is not empty we set the previous node of the stack a to NULL
+		(*a)->prev = NULL;
 	write(1, "pa\n", 3);
 }
 

@@ -6,17 +6,17 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:34 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/22 21:02:24 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:57:37 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	len_of_stack(t_stack *stack) 
+int	len_of_stack(t_stack *stack)
 {
 	int	count;
 
-	if (!stack) 
+	if (!stack)
 		return (0);
 	count = 0;
 	while (stack)
@@ -66,7 +66,7 @@ t_stack	*find_min(t_stack *stack)
 		}
 		stack = stack->next;
 	}
-	return (min_node); 
+	return (min_node);
 }
 
 t_stack	*find_max(t_stack *stack)

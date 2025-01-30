@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_str.c                                        :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 19:38:25 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/16 19:42:19 by malaamir         ###   ########.fr       */
+/*   Created: 2025/01/30 17:48:01 by malaamir          #+#    #+#             */
+/*   Updated: 2025/01/30 21:33:12 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	put_str(char *str)
+void	free_split(char **split_result)
 {
-	while (*str)
-		write(1, str++, 1);
+	int	i;
+
+	i = 0;
+	if (!split_result)
+		return ;
+	while (split_result[i])
+	{
+		free (split_result[i]);
+		i++;
+	}
+	free (split_result);
 }
