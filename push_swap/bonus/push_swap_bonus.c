@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 18:53:10 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/30 15:36:31 by malaamir         ###   ########.fr       */
+/*   Created: 2025/01/30 13:35:05 by malaamir          #+#    #+#             */
+/*   Updated: 2025/01/30 17:48:19 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void free_split(char **split_result)
-{
-	int i = 0;
-
-	if (!split_result)
-		return;
-
-	while (split_result[i])
-	{
-		free(split_result[i]);
-		i++;
-	}
-	free(split_result);
-}
+#include "push_swap_bonus.h"
 
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	char			**split_result;
+	char	**split_result;
 
 	a = NULL;
 	b = NULL;

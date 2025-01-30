@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 19:39:22 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/30 18:06:39 by malaamir         ###   ########.fr       */
+/*   Created: 2025/01/30 17:48:01 by malaamir          #+#    #+#             */
+/*   Updated: 2025/01/30 17:48:23 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 
-void	*ft_free(char **arr, int count)
+void free_split(char **split_result)
 {
-	int	i;
+	int i = 0;
 
-	i = 0;
-	while (i < count)
+	if (!split_result)
+		return;
+
+	while (split_result[i])
 	{
-		if (arr[i])
-			free(arr[i]);
+		free(split_result[i]);
 		i++;
 	}
-	free(arr);
-	return (NULL);
+	free(split_result);
 }

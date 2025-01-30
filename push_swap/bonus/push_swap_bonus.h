@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 19:41:46 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/30 18:08:28 by malaamir         ###   ########.fr       */
+/*   Created: 2025/01/30 13:31:10 by malaamir          #+#    #+#             */
+/*   Updated: 2025/01/30 18:42:25 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 #include <stdbool.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 7
+# endif
 
 typedef struct s_stack 
 {
@@ -35,6 +39,7 @@ int		check_for_errors(char *str_n);
 int		check_for_dup(t_stack *a, int nbr);
 void	free_stack(t_stack **stack);
 void	display_errors(t_stack**a);
+void	free_split(char **split_result);
 
 //Stack initiation
 void	init_stack_a(t_stack **a, char **argv);
@@ -86,6 +91,8 @@ size_t	ft_strlen(const char *s);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 void	put_str(char *str);
 void	ft_free2(char **av);
+///////GNL 
+char	*get_next_line(int fd);
 
 ///////Sorting utils
 void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node);
