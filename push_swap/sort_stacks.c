@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:19:39 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/30 21:56:18 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:53:21 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	sort_stacks(t_stack **a, t_stack **b)
 	int	len_a;
 
 	len_a = len_of_stack(*a);
-	if (len_a-- > 3 && !is_stack_sorted(*a))
-		pb(b, a);
 	if (len_a-- > 3 && !is_stack_sorted(*a))
 		pb(b, a);
 	while (len_a-- > 3 && !is_stack_sorted(*a))

@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 16:33:09 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/30 21:36:46 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/02/01 15:35:27 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,22 @@
 
 static int	count_words(char *s, char c)
 {
-	int		count;
-	bool	inside_word;
+	size_t	i;
+	size_t	count;
 
 	count = 0;
-	if (!s)
+	i = 0;
+	if (!s[i])
 		return (0);
-	while (*s)
+	while (s[i])
 	{
-		inside_word = false;
-		while (*s == c)
-			++s;
-		while (*s != c && *s)
+		if (s[i] == c)
+			i++;
+		else
 		{
-			if (!inside_word)
-			{
-				++count;
-				inside_word = true;
-			}
-			++s;
+			count++;
+			while (s[i] != c && s[i])
+				i++;
 		}
 	}
 	return (count);
@@ -53,14 +50,14 @@ static char	*get_next_word(char *s, char c)
 		++len;
 	next_word = malloc((size_t)len * sizeof(char) + 1);
 	if (!next_word)
-		return (NULL);
+		return (free_split(&next_word), NULL);
 	while ((s[cursor] != c) && s[cursor])
 		next_word[i++] = s[cursor++];
 	next_word[i] = '\0';
 	return (next_word);
 }
 
-char	**split(char *s, char c)
+char	**ft_split(char *s, char c)
 {
 	int		words_count;
 	char	**result_array;
@@ -73,11 +70,11 @@ char	**split(char *s, char c)
 		return (NULL);
 	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));
 	if (!result_array)
-		return (NULL);
+		return (free_split(result_array), NULL);
 	i = 0;
 	result_array[i] = malloc(sizeof(char));
 	if (!result_array[i])
-		return (NULL);
+		return (free_split(result_array), NULL);
 	result_array[i++][0] = '\0';
 	while (words_count-- > 0)
 	{

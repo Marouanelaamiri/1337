@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:41:46 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/30 21:47:39 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/02/01 15:40:59 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	sort_stacks(t_stack **a, t_stack **b);//Turk algorithm
 //helpers
 long	ft_atoi2(const char *str);
 void	free_split(char **split_result);
-char	**split(char *s, char c);
+char	**ft_split(char *s, char c);
 
 //Sorting utils
 void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node);
