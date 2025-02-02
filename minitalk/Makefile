@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+         #
+#    By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 20:07:27 by malaamir          #+#    #+#              #
-#    Updated: 2025/01/31 20:14:16 by malaamir         ###   ########.fr        #
+#    Updated: 2025/02/02 11:49:55 by malaamir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@ NAMEC = client
 NAMES = server
 NAMEC_BONUS = client_bonus
 NAMES_BONUS = server_bonus
-SRCC = client.c minitalk_utils.c
-SRCS = server.c minitalk_utils.c
-SRCC_BONUS = client_bonus.c minitalk_utils.c
-SRCS_BONUS = server_bonus.c minitalk_utils.c
+SRCC = client.c utils.c
+SRCS = server.c utils.c
+SRCC_BONUS = client_bonus.c utils.c
+SRCS_BONUS = server_bonus.c utils.c
  
 #------------------------------Object Files------------------------------------#
 OBJC = ${SRCC:%.c=%.o}
