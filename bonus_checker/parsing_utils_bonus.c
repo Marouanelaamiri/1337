@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*   parsing_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 18:53:01 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/02 10:23:18 by malaamir         ###   ########.fr       */
+/*   Created: 2025/01/30 13:34:35 by malaamir          #+#    #+#             */
+/*   Updated: 2025/01/30 21:20:31 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	check_for_errors(char *str)
 {
@@ -25,23 +25,28 @@ int	check_for_errors(char *str)
 	str++;
 	while (*str)
 	{
-		if (*str < '0' || *str > '9')
+		if (*str < '0' && *str > '9')
 		{
 			return (1);
 		}
-		str++;
+	str++;
 	}
 	return (0);
 }
 
-int	check_for_dup(t_stack *a, int nbr)
+int	check_for_dup(t_stack *a)
 {
-	if (!a)
-		return (0);
+	t_stack	*tmp;
+
 	while (a)
 	{
-		if (a->data == nbr)
-			return (1);
+		tmp = a->next;
+		while (tmp)
+		{
+			if (a->data == tmp->data)
+				return (1);
+			tmp = tmp->next;
+		}
 		a = a->next;
 	}
 	return (0);
@@ -67,6 +72,6 @@ void	free_stack(t_stack **stack)
 void	display_errors(t_stack **a)
 {
 	free_stack(a);
-	write(2, "Error\n", 6);
+	write(1,"Error\n", 6);
 	exit(1);
 }

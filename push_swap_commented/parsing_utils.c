@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:01 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/02 10:23:18 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:57:59 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	check_for_errors(char *str)
 	str++;
 	while (*str)
 	{
-		if (*str < '0' || *str > '9')
+		if (*str < '0' && *str > '9')
 		{
 			return (1);
 		}
-		str++;
+	str++;
 	}
 	return (0);
 }
@@ -67,6 +67,6 @@ void	free_stack(t_stack **stack)
 void	display_errors(t_stack **a)
 {
 	free_stack(a);
-	write(2, "Error\n", 6);
+	write(1,"Error\n", 6);
 	exit(1);
 }
