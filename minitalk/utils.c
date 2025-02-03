@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 10:49:33 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/02 11:59:08 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:46:51 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,30 @@ long	ft_atoi(const char *str)
 		result = result * 10 + (str[i++] - '0');
 	}
 	return (result * sign);
+}
+int ft_strlen(const char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+char	*ft_strdup(const char *s1)
+{
+	char	*dst;
+	size_t	i;
+
+	i = 0;
+	dst = malloc(ft_strlen(s1) + 1);
+	if (dst == NULL)
+		return (NULL);
+	while (s1[i])
+	{
+		dst[i] = s1[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }

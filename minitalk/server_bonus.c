@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 10:49:10 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/03 11:56:19 by malaamir         ###   ########.fr       */
+/*   Created: 2025/02/03 11:52:46 by malaamir          #+#    #+#             */
+/*   Updated: 2025/02/03 11:59:52 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void handler(int sig, siginfo_t *info, void *context)
 		if (holder == '\0')
 		{
 			ft_putchar('\n'); // print a new line if the char is null
+			 if (kill(info->si_pid, SIGUSR1) == -1)
+                write(2, "Error sending ACK\n", 18);
 			pid = 0;
 		}
 		// reset everything

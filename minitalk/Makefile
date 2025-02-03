@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+         #
+#    By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 20:07:27 by malaamir          #+#    #+#              #
-#    Updated: 2025/02/02 11:49:55 by malaamir         ###   ########.fr        #
+#    Updated: 2025/02/03 12:11:34 by malaamir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,6 @@ RM = rm -rf
 CFLAGS = -Wall -Wextra -Werror
 #------------------------------Includes and Exuctables--------------------------#
 INCLUDE = minitalk.h
-
-
 #------------------------------Rules---------------------------------------------#
 all:	$(NAMEC) $(NAMES)
 
@@ -64,4 +62,4 @@ fclean: clean
 	$(RM) $(NAMEC_BONUS)
 	$(RM) $(NAMES_BONUS)
 #------------------------------Rebuild--------------------------------------------#
-re : fclean all
+re : fclean all bonus

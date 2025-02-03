@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 10:49:23 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/03 11:54:37 by malaamir         ###   ########.fr       */
+/*   Created: 2025/02/03 11:52:35 by malaamir          #+#    #+#             */
+/*   Updated: 2025/02/03 12:10:32 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 10:49:23 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/03 11:17:36 by malaamir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+volatile sig_atomic_t ack_received = 0;
 
-#include "minitalk.h"
-
+void ack_handler(int sig)
+{
+	(void)sig;
+	ack_received = 1;
+}
 // Check if every character in the PID is a digit and ensure that the converted pid is positive.
 int pid_check(char *pid_str)
 {
@@ -38,7 +31,7 @@ int pid_check(char *pid_str)
     {
         if (pid_str[i] < '0' || pid_str[i] > '9')
         {
-            ft_putstr("Invalid PID\n");
+            write(2, "Invalid PID\n", 12);
             exit(1);
         }
         i++;
@@ -46,7 +39,7 @@ int pid_check(char *pid_str)
     pid = ft_atoi(pid_str); // Convert the string to an integer.
     if (pid < 0)
     {
-        ft_putstr("Invalid PID\n");
+        write(2, "Invalid PID\n", 12);
         exit(1);
     }
     return (pid);
@@ -72,8 +65,8 @@ void ft_sending_sig(int pid, char holder)
             exit(1);
         }
         // Wait a little between signals.
-        usleep(110); // 110 microseconds.
-        usleep(90);  // Additional 90 microseconds (total 200 microseconds delay).
+        usleep(100);
+		usleep(90);
         bit++;
     }
 }
@@ -101,6 +94,8 @@ int main(int ac, char **av)
                 exit(1);
             }
             // Send the string to the server character by character.
+			
+			signal(SIGUSR1, ack_handler);
             while (message[i])
             {
                 ft_sending_sig(pid, message[i]);
@@ -108,12 +103,15 @@ int main(int ac, char **av)
             }
             // Send the null character to indicate the end of the string.
             ft_sending_sig(pid, '\0');
+			while (!ack_received)
+				pause();
+			ft_putstr("Message acknowledged by the server.\n");
             free(message); // Free the allocated memory.
         }
     }
     else
     {
-        ft_putstr("Invalid arguments.\n");
+        write(2, "Invalid arguments.\n", 19);
         ft_putstr("\n");
     }
     return (0);
