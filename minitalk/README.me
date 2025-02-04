@@ -1,0 +1,92 @@
+Minitalk :
+
+
+the goal of this project is to create a simple that allows processes to communicate with each other(in our case a client and a server) 
+using a protocol we gonna build (the minitalk);
+
+this protocol involves sending messages between two processes using a series of signals over a single wire.
+
+what are signals tho ? : they are a form of communication between processes used by Unix-like systems, when a process receives a
+signal , the process will stop what its doing and take some action .         Client "lol" 108 111 108 l -> 108 -> 01101100 l -> 108 -> 01101100 o -> 111 -> 01101111 Client Server "lol" 108 111 108 24 signals sent for "lol", 
+3 letters x 8  bits 0...1...1...0... signal 0...1...1...0....1..1..0..0.. this is what the server will
+receive , until the final signal
+is sent. decryption encryption we cant send the string directly  as we can see above , the client wants to send a message to the server , but the message cant be directly sent to the server,
+the client has to encrypt the message and the server will decrypt it before it display it.
+
+
+Processes & signals :
+
+lets break down this concepts in simple terms :
+
+lets have a program running on the computer , google per example is running in the background , when you have multiple windows open
+on the browser you have multiple programs running , those are the processes.
+
+now if you want to stop this programs , we can do it by simply closing the browser window , or sending a signal to the process (a signal is
+just telling a process to do certain thing).
+
+we can use the "kill" command in a terminal to send a signal that tells the process to terminate itself. 
+
+lets talk about the "kill" command :
+
+if you run the kill command without specifying a signal, by default it sends the SIGTERM signal (signal number 15), which request the process
+to terminate gracefully.
+
+but processes can choose to handle signals in a costume way, they do this by setting up a signal handler (a function that execute when a 
+particular signal is received) this is where signals lie SIGUSER1 and SIGUSER2 come into play.
+
+//NOTE//
+
+in the standard c library signal.h we have 6 signals :
+
+SIGABRT : "abort" , abnormal termination.
+SIGFPE : floating point exception.
+SIGILL : "illegal", invalid instruction.
+SIGINT : "interrupt" , interactive attention request sent to the program.
+SIGSEGV : "segmentation violation", invalid memory access.
+SIGTERM : "terminate", terminate a process.
+
+our defined signals SEGUSR1 , SEGUSR2 are used to communicate data between the client and the server.
+the SIGUSR1 represent the binary 1 and the other represent the binary 0, the server's sig handler then interprets a series of these 
+signals to reconstruct a message (printing "lol") .
+
+signals handling :
+
+we used sigaction to set up handlers for SIGUSR1 and SIGUSR2. in these handlers, the server collects the bits sent by the client 
+for example it might build a character one bit at a time until a complete byte is assembled , then output the character.
+
+lets explain some terms that have been used :
+
+kill : is a system call as explained above it sends a signal to a process identified by its id , and it can send any signal not just the default
+SIGTERM.
+
+sigaction : is a function used to change the action taken by a process on receipt of a specific signal. it allow us to define a custom signal 
+handler that specifies how the program should respond when it receives a signal. with sigaction we can  also control aspects such as
+which signals should be blocked while your handler is running and specify whether extra information should be provided to the handler.
+
+
+what is signal.h :  its a standard header provides definitions for signal handling. it includes :
+the definitions of signals constants like (SIGUSR1, SIGUSR2, SIGTERM ...)
+the prototypes of signal-related functions (such as kill, sigaction)
+
+
+The struct sigaction structure : 
+
+this struct is used to describe how a process should behave when it receives a particular signal :
+
+per example ; 
+
+sa_sigaction : this is an alternative to sa-handler , its a pointer to a function that takes three arguments :
+int sig : the signal number;
+siginfo_t *info : a pointer to a structure containing additional information about the signal (such as process's PID)
+void *context : a pointer to a structure that holds context specific information (often used for advanced signal handling) // we didnt work with it 
+
+sa_flags : this integer is used to modify the behavior of the signal handling. one common flag is SA_SIGINFO : 
+SA_SIGINFO : when this flag is set in sa_flags, it tells the system to use the sa_sigaction field instead of the simpler sa_handler, this 
+allows the handler to receive extra information about the signal.
+
+
+getpid():
+Returns the process ID of the server. This is used so clients know which PID to send signals to.
+
+pause():
+A system call that suspends the process until any signal is delivered. This keeps the server running, waiting for incoming signals.
