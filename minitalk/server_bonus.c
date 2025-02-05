@@ -6,70 +6,77 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:52:46 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/03 11:59:52 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:56:49 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void handler(int sig, siginfo_t *info, void *context)
+void	reset_variables(int *pid, int *i_bit, char *holder, int *buffer_index)
 {
-	static int pid; // stores the pid of the client
-	static int i_bit; // count the bits received
-	static char holder; // accumulate the bits to build the char
+	*pid = 0;
+	*i_bit = 0;
+	*holder = 0;
+	*buffer_index = 0;
+}
 
-	(void)context; // unused so we cast it to void
+void	print_buffer(char *buffer, int *buffer_index, int pid)
+{
+	int	i;
 
-	// check if the signal is from the same client , if not reset everything
-	if (pid != info->si_pid)
+	i = 0;
+	while (i < *buffer_index)
 	{
-		pid = info->si_pid;
-		i_bit = 0;
-		holder = 0;
+		ft_putchar(buffer[i]);
+		i++;
 	}
+	if (buffer[*buffer_index - 1] == '\0')
+	{
+		kill(pid, SIGUSR1);
+	}
+	*buffer_index = 0;
+}
 
-	// check if the signal is SIGUSR1 or SIGUSR2 and build the chars bit by bit
+void	handler(int sig, siginfo_t *info, void *context)
+{
+	static int	pid;
+	static int	i_bit;
+	static char	holder;
+	static char	buffer[4] = {0};
+	static int	buffer_index;
+
+	(void)context;
+	if (pid != info->si_pid)
+		reset_variables(&pid, &i_bit, &holder, &buffer_index);
+	pid = info->si_pid;
 	if (sig == SIGUSR1)
 		holder |= (1 << i_bit);
 	i_bit++;
-
-	// when a full char has been received
 	if (i_bit == CHAR_BIT)
 	{
-		ft_putchar(holder); // print it
-		if (holder == '\0')
-		{
-			ft_putchar('\n'); // print a new line if the char is null
-			 if (kill(info->si_pid, SIGUSR1) == -1)
-                write(2, "Error sending ACK\n", 18);
-			pid = 0;
-		}
-		// reset everything
+		buffer[buffer_index++] = holder;
 		holder = 0;
 		i_bit = 0;
+		if (buffer_index == 4 || buffer[buffer_index - 1] == '\0')
+			print_buffer(buffer, &buffer_index, pid);
 	}
-
 }
-int main()
+
+int	main(void)
 {
 	struct sigaction	sa;
 	int					pid;
 
-	pid = getpid(); // retrieve the current process id (system call wrapper)
+	pid = getpid();
 	ft_putstr("Server PID: ");
 	ft_putnbr(pid);
 	ft_putchar('\n');
-
-	// configure the sigaction struct
-	sa.sa_sigaction = handler;// set our costum signal handler
-	sa.sa_flags = SA_SIGINFO;// use the sa_sigaction field
-
-	// set the signal handler for SIGUSR1 and SIGUSR2
+	
+	sa.sa_sigaction = handler;
+	sa.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-
-	// infinite loop to keep the server running and waiting for signals
 	while (1)
-		pause(); // suspend the process until a signal is received
+		pause();
 	return (0);
 }

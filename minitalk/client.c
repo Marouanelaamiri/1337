@@ -6,115 +6,82 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 10:49:23 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/03 11:54:37 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:53:03 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 10:49:23 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/03 11:17:36 by malaamir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "minitalk.h"
-
-// Check if every character in the PID is a digit and ensure that the converted pid is positive.
-int pid_check(char *pid_str)
+int	pid_check(char *pid_str)
 {
-    int i;
-    int pid;
+	int	i;
+	int	pid;
 
-    i = 0;
-    pid = 0;
-    while (pid_str[i])
-    {
-        if (pid_str[i] < '0' || pid_str[i] > '9')
-        {
-            ft_putstr("Invalid PID\n");
-            exit(1);
-        }
-        i++;
-    }
-    pid = ft_atoi(pid_str); // Convert the string to an integer.
-    if (pid < 0)
-    {
-        ft_putstr("Invalid PID\n");
-        exit(1);
-    }
-    return (pid);
+	i = 0;
+	pid = 0;
+	while (pid_str[i])
+	{
+		if (pid_str[i] < '0' || pid_str[i] > '9')
+		{
+			write(2, "Invalid PID\n", 12);
+			exit(1);
+		}
+		i++;
+	}
+	pid = ft_atoi(pid_str);
+	if (pid < 0)
+	{
+		write(2, "Invalid PID\n", 12);
+		exit(1);
+	}
+	return (pid);
 }
 
-void ft_sending_sig(int pid, char holder)
+void	ft_sending_sig(int pid, char holder)
 {
-    int sig;
-    int bit;
+	int	sig;
+	int	bit;
 
-    bit = 0;
-    while (bit < CHAR_BIT)
-    {
-        // Decide which signal to send based on the bit value.
-        if (holder & (1 << bit))
-            sig = SIGUSR1; // Represents bit 1.
-        else
-            sig = SIGUSR2; // Represents bit 0.
-        // Send the signal to the server.
-        if (kill(pid, sig) == -1) // Returns -1 if the signal is not sent.
-        {
-            write(2, "Error in sending signal\n", 25);
-            exit(1);
-        }
-        // Wait a little between signals.
-        usleep(110); // 110 microseconds.
-        usleep(90);  // Additional 90 microseconds (total 200 microseconds delay).
-        bit++;
-    }
+	bit = 0;
+	while (bit < CHAR_BIT)
+	{
+		if (holder & (1 << bit))
+			sig = SIGUSR1;
+		else
+			sig = SIGUSR2;
+		if (kill(pid, sig) == -1)
+		{
+			write(2, "Error in sending signal\n", 25);
+			exit(1);
+		}
+		usleep(110);
+		usleep(90);
+		bit++;
+	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    int pid;
-    int i;
-    char *message;  // Pointer to the allocated message on the heap.
+	int		pid;
+	int		i;
+	char	*message;
 
-    i = 0;
-    if (ac == 3 && av[2])
-    {
-        pid = pid_check(av[1]); // Validate the PID.
-        if (pid != 0)
-        {
-            // Allocate a copy of the message on the heap.
-            // If you have your own ft_strdup, use that; otherwise, strdup from string.h.
-            message = ft_strdup(av[2]); 
-            // Alternatively, if you don't have ft_strdup:
-            // message = strdup(av[2]);
-            if (!message)
-            {
-                write(2, "Memory allocation error\n", 24);
-                exit(1);
-            }
-            // Send the string to the server character by character.
-            while (message[i])
-            {
-                ft_sending_sig(pid, message[i]);
-                i++;
-            }
-            // Send the null character to indicate the end of the string.
-            ft_sending_sig(pid, '\0');
-            free(message); // Free the allocated memory.
-        }
-    }
-    else
-    {
-        ft_putstr("Invalid arguments.\n");
-        ft_putstr("\n");
-    }
-    return (0);
+	i = 0;
+	if (ac == 3 && av[2])
+	{
+		pid = pid_check(av[1]);
+		if (pid)
+		{
+			message = ft_strdup(av[2]);
+			if (!message)
+				display_error(message);
+			while (message[i])
+				ft_sending_sig(pid, message[i++]);
+			ft_sending_sig(pid, '\0');
+			free(message);
+		}
+	}
+	else
+		write(2, "Invalid arguments.\n", 19);
+	return (0);
 }

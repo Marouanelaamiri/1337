@@ -6,7 +6,7 @@
 #    By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 20:07:27 by malaamir          #+#    #+#              #
-#    Updated: 2025/02/03 12:11:34 by malaamir         ###   ########.fr        #
+#    Updated: 2025/02/04 12:52:34 by malaamir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@ NAMEC = client
 NAMES = server
 NAMEC_BONUS = client_bonus
 NAMES_BONUS = server_bonus
-SRCC = client.c utils.c
-SRCS = server.c utils.c
-SRCC_BONUS = client_bonus.c utils.c
-SRCS_BONUS = server_bonus.c utils.c
+SRCC = client.c utils1.c utils2.c
+SRCS = server.c utils1.c utils2.c
+SRCC_BONUS = client_bonus.c utils1.c utils2.c
+SRCS_BONUS = server_bonus.c utils1.c utils2.c
  
 #------------------------------Object Files------------------------------------#
 OBJC = ${SRCC:%.c=%.o}
@@ -62,4 +62,4 @@ fclean: clean
 	$(RM) $(NAMEC_BONUS)
 	$(RM) $(NAMES_BONUS)
 #------------------------------Rebuild--------------------------------------------#
-re : fclean all bonus
+re : fclean all
