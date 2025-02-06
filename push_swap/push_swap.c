@@ -16,13 +16,20 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	char	**split_argv;
 
 	a = NULL;
 	b = NULL;
+	split_argv = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
+	 else if (argc == 2)
+    {
+        split_argv = ft_split(argv[1], ' ');
+        if (!split_argv)
+            return (1);
+        argv = split_argv;
+    }
 	init_stack_a(&a, argv + 1);
 	if (!is_stack_sorted(a))
 	{
