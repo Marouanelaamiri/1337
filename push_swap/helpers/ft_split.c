@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 16:33:09 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/01 15:35:27 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:34:06 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	*get_next_word(char *s, char c)
 		++len;
 	next_word = malloc((size_t)len * sizeof(char) + 1);
 	if (!next_word)
-		return (free_split(&next_word), NULL);
+		return (NULL);
 	while ((s[cursor] != c) && s[cursor])
 		next_word[i++] = s[cursor++];
 	next_word[i] = '\0';
@@ -70,7 +70,7 @@ char	**ft_split(char *s, char c)
 		return (NULL);
 	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));
 	if (!result_array)
-		return (free_split(result_array), NULL);
+		return (NULL);
 	i = 0;
 	result_array[i] = malloc(sizeof(char));
 	if (!result_array[i])
@@ -80,7 +80,7 @@ char	**ft_split(char *s, char c)
 	{
 		result_array[i] = get_next_word(s, c);
 		if (!result_array[i++])
-			return (NULL);
+			return (free_split(result_array), NULL);
 	}
 	result_array[i] = NULL;
 	return (result_array);

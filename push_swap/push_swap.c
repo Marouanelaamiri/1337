@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:10 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/01 15:40:51 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:38:54 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,15 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	char	**split_argv;
 
 	a = NULL;
 	b = NULL;
-	split_argv = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	 else if (argc == 2)
-    {
-        split_argv = ft_split(argv[1], ' ');
-        if (!split_argv)
-            return (1);
-        argv = split_argv;
-    }
+	else if (argc == 2)
+		argv = ft_split(argv[1], ' ');
+	if (argc == 2 && !argv)
+		return (1);
 	init_stack_a(&a, argv + 1);
 	if (!is_stack_sorted(a))
 	{

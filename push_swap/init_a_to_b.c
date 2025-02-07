@@ -6,13 +6,13 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:53:06 by malaamir          #+#    #+#             */
-/*   Updated: 2025/01/30 21:37:09 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:47:20 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	find_target_for_a(t_stack *a, t_stack *b)
+static void	find_target_for_a(t_stack *a, t_stack *b) // we find the target node in b for a the optimal target is the node with the value smaller than a and close to a
 {
 	t_stack	*current_b;
 	t_stack	*target_node;
