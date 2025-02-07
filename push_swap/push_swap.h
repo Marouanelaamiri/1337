@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:41:46 by malaamir          #+#    #+#             */
-/*   Updated: 2025/02/07 11:33:44 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:10:14 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,12 @@ void	sort_stacks(t_stack **a, t_stack **b);//Turk algorithm
 //helpers
 long	ft_atoi2(const char *str);
 void	free_split(char **split_result);
-char	**ft_split(char *s, char c);
+char	**ft_split(char const *s, char c);
+char	*ft_strdup(const char *s1);
+char	*ft_strjoin(const char *s1, const char *s2);
+size_t	ft_strlen(const char *s);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 //Sorting utils
 void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node);
