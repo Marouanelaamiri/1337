@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:40:15 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/05 23:36:18 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/03/06 23:16:47 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void init_sim(t_sim *sim, t_philo *philo)
 	pthread_mutex_init(&sim->meal_lock, NULL);
 	pthread_mutex_init(&sim->print_lock, NULL);
 }
-void init_forks(pthread_mutex_t *forks, t_philo *philo)
+void init_forks(pthread_mutex_t *forks, int philos)
 {
 	int i;
 
 	i = 0;
-	while (i < philo->philo_nums)
+	while (i < philos)
 	{
 		pthread_mutex_init(&forks[i], NULL);
 		i++;
@@ -54,7 +54,7 @@ void init_philos(t_philo *philos, t_sim *sim, pthread_mutex_t *forks, char **av)
 		philos[i].eating = 0;
 		philos[i].meals_eaten = 0;
 		init_input(&philos[i], av);
-		philos[i].start_timer = get_time(); // to do
+		philos[i].start_timer = get_time();
 		philos[i].last_meal = get_time();
 		philos[i].print_lock = &sim->print_lock;
 		philos[i].death_lock = &sim->dead_lock;
@@ -74,11 +74,11 @@ int init_waiter(t_sim *sim, pthread_mutex_t *forks)
 	int i;
 
 	i = 0;
-	if (pthread_create(&observer, NULL, &waiter, sim->philos) != 0) // to do
+	if (pthread_create(&observer, NULL, &waiter, sim->philos) != 0)
 		destroy_all("Error\n", sim, forks);
 	while (i < sim->philos[0].philo_nums)
 	{
-		if (pthread_create(&sim->philos[i].thread, NULL, &routine, // to do
+		if (pthread_create(&sim->philos[i].thread, NULL, &routine,
 				&sim->philos[i]) != 0)
 			destroy_all("Error\n", sim, forks);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:35:31 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/05 23:55:28 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/03/06 23:18:15 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void ft_eat(t_philo *philo)
 	pthread_mutex_lock(philo->meal_lock);
 	philo->last_meal = get_time(); // to do
 	philo->meals_eaten++;
-	pthrea_mutex_unlock(philo->meal_lock);
+	pthread_mutex_unlock(philo->meal_lock);
 	ft_pause(philo->time_to_eat);
 	philo->eating = 0;
 	pthread_mutex_unlock(philo->left_fork);

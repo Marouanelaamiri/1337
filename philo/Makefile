@@ -6,20 +6,20 @@
 #    By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 16:24:51 by malaamir          #+#    #+#              #
-#    Updated: 2025/03/05 16:27:51 by malaamir         ###   ########.fr        #
+#    Updated: 2025/03/06 23:20:39 by malaamir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #------------------------------Source Files------------------------------------#
-SRC = ft_atoi.c ft_strlen.c init_forks.c init_philo.c init_sim.c parsing.c \
-		philo.c routine.c start_sim.c the_waiter.c utils.c
+SRC = ft_atoi.c ft_strlen.c initing.c parsing.c philo.c routine.c the_waiter.c \
+	utils.c
  
 #------------------------------Object Files------------------------------------#
 OBJ = $(SRC:.c=.o)
 #------------------------------Compiler and Flages------------------------------#
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -pthread
 #------------------------------Includes and Exuctables--------------------------#
 NAME = philo
 
