@@ -1,0 +1,70 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/04 16:24:44 by malaamir          #+#    #+#             */
+/*   Updated: 2025/03/05 23:55:57 by malaamir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PHILO_H
+# define PHILO_H
+
+# include <pthread.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdbool.h>
+# include <sys/time.h>
+
+# define PHILO_MAX 200
+
+typedef struct s_philo
+{
+    int id;
+    int eating;
+    int meals_eaten;
+    int philo_nums;
+    int num_of_eat;
+    int *death;
+    size_t last_meal;
+    size_t time_to_die;
+    size_t time_to_eat;
+    size_t time_to_sleep;
+    size_t start_timer;
+    pthread_t thread;
+    pthread_mutex_t *right_fork;
+    pthread_mutex_t *left_fork;
+    pthread_mutex_t *print_lock;
+    pthread_mutex_t *death_lock;
+    pthread_mutex_t *meal_lock;
+}   t_philo;
+
+typedef struct s_sim
+{
+    int dead_flag;
+    t_philo *philos;
+    pthread_mutex_t dead_lock;
+    pthread_mutex_t meal_lock;
+    pthread_mutex_t print_lock;
+}   t_sim;
+int	ft_atoi(const char *str);
+int	ft_strlen(const char *s);
+void init_input(t_philo *philo, char **av);
+void init_sim(t_sim *sim, t_philo *philo);
+void init_forks(pthread_mutex_t *forks, t_philo *philo);
+void init_philos(t_philo *philos, t_sim *sim, pthread_mutex_t *forks, char **av);
+int init_waiter(t_sim *sim, pthread_mutex_t *forks);
+int check_deadlock_loop(t_philo *philo);
+int check_valid_args(char **av);
+int check_args(char *args);
+void *routine(void *ptr);
+void ft_think(t_philo *philo);
+void ft_sleep(t_philo *philo);
+void ft_eat(t_philo *philo);
+
+
+#endif
