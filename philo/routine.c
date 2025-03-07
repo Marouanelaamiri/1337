@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:35:31 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/06 23:18:15 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/03/07 23:13:17 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void ft_think(t_philo *philo)
 {
-	send_msg("Is thinking 🤔...", philo, philo->id); // to do
+	send_msg("Is thinking 🤔", philo, philo->id);
 }
 void ft_sleep(t_philo *philo)
 {
-	send_msg("Is a sleep 😴 ...", philo, philo->id);
+	send_msg("Is a sleep 😴", philo, philo->id);
 	ft_pause(philo->time_to_sleep);
 }
 void ft_eat(t_philo *philo)
@@ -34,9 +34,9 @@ void ft_eat(t_philo *philo)
 	pthread_mutex_lock(philo->left_fork);
 	send_msg("Ha taken a fork 🍴", philo, philo->id);
 	philo->eating = 1;
-	send_msg("Is eating 😋 ...", philo, philo->id);
+	send_msg("Is eating 😋", philo, philo->id);
 	pthread_mutex_lock(philo->meal_lock);
-	philo->last_meal = get_time(); // to do
+	philo->last_meal = get_time();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->meal_lock);
 	ft_pause(philo->time_to_eat);
@@ -50,7 +50,7 @@ void *routine(void *ptr)
 
 	philo = (t_philo *)ptr;
 	if (philo->id % 2 == 0)
-		ft_pause(1); // to do
+		ft_pause(1);
 	while(!check_deadlock_loop(philo))
 	{
 		ft_eat(philo);

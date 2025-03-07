@@ -6,7 +6,7 @@
 #    By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 16:24:51 by malaamir          #+#    #+#              #
-#    Updated: 2025/03/06 23:20:39 by malaamir         ###   ########.fr        #
+#    Updated: 2025/03/07 23:12:04 by malaamir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJ = $(SRC:.c=.o)
 #------------------------------Compiler and Flages------------------------------#
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Wextra -Werror -g -pthread
 #------------------------------Includes and Exuctables--------------------------#
 NAME = philo
 
