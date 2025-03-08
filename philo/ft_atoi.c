@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:21:51 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/07 21:46:00 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:19:18 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ static int	ft_whitespaces(int c)
 	return (0);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
-	size_t				i;
-	int					sign;
-	unsigned long long	result;
+	int		i;
+	int		sign;
+	int		result;
 
 	i = 0;
 	sign = 1;
@@ -39,12 +39,7 @@ int	ft_atoi(char *str)
 	}
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		result = result * 10 + (str[i] - '0');
-		if (result > 9223372036854775807 && sign == 1)
-			return (-1);
-		if (result > 9223372036854775807 && sign == -1)
-			return (0);
-		i++;
+		result = result * 10 + (str[i++] - '0');
 	}
 	return (result * sign);
 }

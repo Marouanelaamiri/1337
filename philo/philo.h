@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:24:44 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/07 23:06:04 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/03/08 20:40:14 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdbool.h>
+# include <limits.h>
 # include <sys/time.h>
 
 # define PHILO_MAX 200
@@ -52,14 +52,14 @@ typedef struct s_sim
     pthread_mutex_t print_lock;
 }   t_sim;
 
-int	ft_atoi(char *str);
+int	ft_atoi(const char *str);
 int	ft_strlen(const char *s);
 void init_input(t_philo *philo, char **av);
 void init_sim(t_sim *sim, t_philo *philo);
 void init_forks(pthread_mutex_t *forks, int philos);
 void init_philos(t_philo *philos, t_sim *sim, pthread_mutex_t *forks, char **av);
 int init_waiter(t_sim *sim, pthread_mutex_t *forks);
-int check_deadlock_loop(t_philo *philo);
+int check_dead(t_philo *philo);
 int check_valid_args(char **av);
 int check_valid_num(char *str);
 void *routine(void *ptr);
@@ -73,6 +73,6 @@ void *waiter(void *ptr);
 void send_msg(char *str, t_philo *philo, int id);
 void	destroy_all(char *str, t_sim *program, pthread_mutex_t *forks);
 size_t	get_time(void);
-int	ft_pause(size_t milliseconds);
+int	ft_pause(t_philo *philo ,size_t milliseconds);
 
 #endif

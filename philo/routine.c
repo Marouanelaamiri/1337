@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:35:31 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/07 23:13:17 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/03/08 20:40:32 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void ft_think(t_philo *philo)
 void ft_sleep(t_philo *philo)
 {
 	send_msg("Is a sleep 😴", philo, philo->id);
-	ft_pause(philo->time_to_sleep);
+	ft_pause(philo, philo->time_to_sleep);
 }
 void ft_eat(t_philo *philo)
 {
@@ -27,7 +27,7 @@ void ft_eat(t_philo *philo)
 	send_msg("Has taken a fork 🍴", philo, philo->id);
 	if(philo->philo_nums == 1)
 	{
-		ft_pause(philo->time_to_die);
+		ft_pause(philo, philo->time_to_die);
 		pthread_mutex_unlock(philo->right_fork);
 		return ;
 	}
@@ -39,7 +39,7 @@ void ft_eat(t_philo *philo)
 	philo->last_meal = get_time();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->meal_lock);
-	ft_pause(philo->time_to_eat);
+	ft_pause(philo, philo->time_to_eat);
 	philo->eating = 0;
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
@@ -50,8 +50,8 @@ void *routine(void *ptr)
 
 	philo = (t_philo *)ptr;
 	if (philo->id % 2 == 0)
-		ft_pause(1);
-	while(!check_deadlock_loop(philo))
+		usleep(400);
+	while(!check_dead(philo))
 	{
 		ft_eat(philo);
 		ft_sleep(philo);
