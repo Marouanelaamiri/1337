@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:56:33 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/08 20:42:36 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/03/08 21:08:02 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void *waiter(void *ptr)
 {
 	t_philo *philos;
 
+	if(!ptr)
+		return (NULL);
 	philos = (t_philo *)ptr;
 	while(1)
 		if(check_if_any_died(philos) == 1 || check_if_all_ate(philos) == 1)
