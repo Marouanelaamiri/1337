@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:56:45 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/08 20:40:46 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:28:07 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void send_msg(char *str, t_philo *philo, int id)
 
 	pthread_mutex_lock(philo->print_lock);
 	time = get_time() - philo->start_timer;
-	if (!check_dead(philo))
+	if (!check_dead_loop(philo))
 		printf("%zu %d %s\n", time, id, str);
 	pthread_mutex_unlock(philo->print_lock);
 }
@@ -57,7 +57,7 @@ int	ft_pause(t_philo *philo ,size_t milliseconds)
 	start = get_time();
 	while ((get_time() - start) < milliseconds)
 	{
-		if (check_dead(philo))
+		if (check_dead_loop(philo))
 			return (1);
 		usleep(400);
 	}

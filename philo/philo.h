@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:24:44 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/08 20:40:14 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:27:51 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void init_sim(t_sim *sim, t_philo *philo);
 void init_forks(pthread_mutex_t *forks, int philos);
 void init_philos(t_philo *philos, t_sim *sim, pthread_mutex_t *forks, char **av);
 int init_waiter(t_sim *sim, pthread_mutex_t *forks);
-int check_dead(t_philo *philo);
+int check_dead_loop(t_philo *philo);
 int check_valid_args(char **av);
 int check_valid_num(char *str);
 void *routine(void *ptr);

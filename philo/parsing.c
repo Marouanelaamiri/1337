@@ -6,13 +6,13 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:25:10 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/09 17:21:00 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:27:39 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int check_dead(t_philo *philo)
+int check_dead_loop(t_philo *philo)
 {
 	pthread_mutex_lock(philo->death_lock);
 	if (*philo->death == 1)

@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:35:31 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/08 20:40:32 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:27:56 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void *routine(void *ptr)
 	philo = (t_philo *)ptr;
 	if (philo->id % 2 == 0)
 		usleep(400);
-	while(!check_dead(philo))
+	while(!check_dead_loop(philo))
 	{
 		ft_eat(philo);
 		ft_sleep(philo);
