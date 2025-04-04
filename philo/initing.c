@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:40:15 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/04 10:48:15 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:36:49 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void init_mutex(t_sim *sim, t_philo *philos)
 	sim->dead_flag = 0;
 	sim->philos = philos;
 	pthread_mutex_init(&sim->print_lock, NULL);
-	pthread_mutex_init(&sim->dead_lock, NULL);
+	pthread_mutex_init(&sim->death_lock, NULL);
 	pthread_mutex_init(&sim->meal_lock, NULL);
 }
 void init_forks(pthread_mutex_t *forks, int philos)
@@ -56,7 +56,7 @@ void init_philos(t_philo *philos, t_sim *sim, pthread_mutex_t *forks, char **av)
         philos[i].start_timer = get_time();
         philos[i].last_meal = get_time();
         philos[i].print_lock = &sim->print_lock;
-        philos[i].death_lock = &sim->dead_lock;
+        philos[i].death_lock = &sim->death_lock;
         philos[i].meal_lock = &sim->meal_lock;
         philos[i].death = &sim->dead_flag;
         philos[i].left_fork = &forks[i];

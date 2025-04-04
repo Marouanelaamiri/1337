@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:56:45 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/04 10:40:29 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:36:54 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	destroy_all(char *str, t_sim *sim, pthread_mutex_t *forks)
 	}
 	pthread_mutex_destroy(&sim->print_lock);
 	pthread_mutex_destroy(&sim->meal_lock);
-	pthread_mutex_destroy(&sim->dead_lock);
+	pthread_mutex_destroy(&sim->death_lock);
 	while (i < sim->philos[0].philo_nums)
 		pthread_mutex_destroy(&forks[i++]);
 }
