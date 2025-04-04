@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:31 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/08 21:11:08 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/04 10:48:43 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int main(int ac, char **av)
     if (check_valid_args(av) == 1)
         return (1);
 
-    init_sim(&sim, philos);
+    init_mutex(&sim, philos);
     init_forks(forks, ft_atoi(av[1]));
     init_philos(philos, &sim, forks, av);
-    init_waiter(&sim, forks);
+    init_threads(&sim, forks);
     destroy_all(NULL, &sim, forks);
     return(0);
 }

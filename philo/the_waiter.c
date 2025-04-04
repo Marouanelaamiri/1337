@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:56:33 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/08 21:08:02 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/04 12:04:09 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int check_if_any_died(t_philo *philo)
 	{
 		if (check_death(&philo[i], philo[i].time_to_die))
 		{
-			send_msg("Died 💀", &philo[i], philo[i].id);
+			send_msg("died", &philo[i], philo[i].id);
 			pthread_mutex_lock(philo[0].death_lock);
 			*philo->death = 1;
 			pthread_mutex_unlock(philo[0].death_lock);

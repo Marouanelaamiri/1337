@@ -6,20 +6,12 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:25:10 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/09 17:27:39 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/04 10:40:18 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int check_dead_loop(t_philo *philo)
-{
-	pthread_mutex_lock(philo->death_lock);
-	if (*philo->death == 1)
-		return (pthread_mutex_unlock(philo->death_lock), 1);
-	pthread_mutex_unlock(philo->death_lock);
-	return (0);
-}
 int check_valid_num(char *str)
 {
 	if (!str || !*str)

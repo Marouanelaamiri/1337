@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:40:15 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/08 20:38:44 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/04 10:48:15 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void init_input(t_philo *philo, char **av)
 		philo->num_of_eat = -1;
 	
 }
-void init_sim(t_sim *sim, t_philo *philos)
+void init_mutex(t_sim *sim, t_philo *philos)
 {
 	sim->dead_flag = 0;
 	sim->philos = philos;
@@ -68,7 +68,7 @@ void init_philos(t_philo *philos, t_sim *sim, pthread_mutex_t *forks, char **av)
         i++;
     }
 }
-int init_waiter(t_sim *sim, pthread_mutex_t *forks)
+int init_threads(t_sim *sim, pthread_mutex_t *forks)
 {
 	pthread_t observer;
 	int i;
