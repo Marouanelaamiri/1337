@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:56:45 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/05 15:16:13 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/05 18:46:53 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,23 @@
 
 int	check_dead_loop(t_philo *philo)
 {
+	int dead;
+
+	// First, check the global death flag.
 	pthread_mutex_lock(philo->death_lock);
-	if (*philo->death == 1)
-		return (pthread_mutex_unlock(philo->death_lock), 1);
+	dead = *philo->death;
 	pthread_mutex_unlock(philo->death_lock);
+	if (dead)
+		return (1);
+		
+	// Now, check if the philosopher is not eating and has exceeded time_to_die.
+	pthread_mutex_lock(philo->meal_lock);
+	if (!philo->eating && (get_time() - philo->last_meal > philo->time_to_die))
+	{
+		pthread_mutex_unlock(philo->meal_lock);
+		return (1);
+	}
+	pthread_mutex_unlock(philo->meal_lock);
 	return (0);
 }
 

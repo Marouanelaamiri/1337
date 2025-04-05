@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:35:31 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/05 16:03:40 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/05 18:38:45 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	ft_eat(t_philo *philo)
 	}
 	pthread_mutex_lock(philo->left_fork);
 	send_msg("has taken a fork", philo, philo->id);
-	philo->eating = 1;
-	send_msg("is eating", philo, philo->id);
 	pthread_mutex_lock(philo->meal_lock);
+	philo->eating = 1;
 	philo->last_meal = get_time();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->meal_lock);
+	send_msg("is eating", philo, philo->id);
 	ft_pause(philo, philo->time_to_eat);
 	philo->eating = 0;
 	pthread_mutex_unlock(philo->left_fork);
