@@ -6,13 +6,13 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:56:33 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/04 12:04:09 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/05 15:14:41 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int check_death(t_philo *philo, size_t time_to_die)
+int	check_death(t_philo *philo, size_t time_to_die)
 {
 	pthread_mutex_lock(philo->meal_lock);
 	if (get_time() - philo->last_meal >= time_to_die && philo->eating == 0)
@@ -21,10 +21,11 @@ int check_death(t_philo *philo, size_t time_to_die)
 	return (0);
 }
 
-int check_if_any_died(t_philo *philo)
+int	check_if_any_died(t_philo *philo)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	while (i < philo[0].philo_nums)
 	{
 		if (check_death(&philo[i], philo[i].time_to_die))
@@ -40,16 +41,16 @@ int check_if_any_died(t_philo *philo)
 	return (0);
 }
 
-int check_if_all_ate(t_philo *philos)
+int	check_if_all_ate(t_philo *philos)
 {
-	int i;
-	int finish;
+	int	i;
+	int	finish;
 
 	i = 0;
 	finish = 0;
 	if (philos[0].num_of_eat == -1)
 		return (0);
-	while (i <philos[0].philo_nums)
+	while (i < philos[0].philo_nums)
 	{
 		pthread_mutex_lock(philos[i].meal_lock);
 		if (philos[i].meals_eaten >= philos[i].num_of_eat)
@@ -67,15 +68,18 @@ int check_if_all_ate(t_philo *philos)
 	return (0);
 }
 
-void *waiter(void *ptr)
+void	*waiter(void *ptr)
 {
-	t_philo *philos;
+	t_philo	*philos;
 
-	if(!ptr)
+	if (!ptr)
 		return (NULL);
 	philos = (t_philo *)ptr;
-	while(1)
-		if(check_if_any_died(philos) == 1 || check_if_all_ate(philos) == 1)
-			break ;	
+	while (1)
+	{
+		if (check_if_any_died(philos) == 1 || check_if_all_ate(philos) == 1)
+			break ;
+		usleep(400);
+	}
 	return (ptr);
 }

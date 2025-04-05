@@ -6,13 +6,13 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:56:45 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/04 16:36:54 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/05 15:16:13 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int check_dead_loop(t_philo *philo)
+int	check_dead_loop(t_philo *philo)
 {
 	pthread_mutex_lock(philo->death_lock);
 	if (*philo->death == 1)
@@ -20,9 +20,10 @@ int check_dead_loop(t_philo *philo)
 	pthread_mutex_unlock(philo->death_lock);
 	return (0);
 }
-void send_msg(char *str, t_philo *philo, int id)
+
+void	send_msg(char *str, t_philo *philo, int id)
 {
-	size_t time;
+	size_t	time;
 
 	pthread_mutex_lock(philo->print_lock);
 	time = get_time() - philo->start_timer;
@@ -57,7 +58,7 @@ size_t	get_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-int	ft_pause(t_philo *philo ,size_t milliseconds)
+int	ft_pause(t_philo *philo, size_t milliseconds)
 {
 	size_t	start;
 

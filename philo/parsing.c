@@ -6,13 +6,13 @@
 /*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:25:10 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/04 10:40:18 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/05 15:06:29 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int check_valid_num(char *str)
+int	check_valid_num(char *str)
 {
 	if (!str || !*str)
 		return (1);
@@ -30,10 +30,11 @@ int check_valid_num(char *str)
 		return (1);
 	return (0);
 }
-int check_valid_args(char **av)
+
+int	check_valid_args(char **av)
 {
 	if (ft_atoi(av[1]) > PHILO_MAX || ft_atoi(av[1]) <= 0
-	|| check_valid_num(av[1]) == 1)
+		|| check_valid_num(av[1]) == 1)
 		return (write(2, "Error: Invalid number of philosophers\n", 38), 1);
 	if (ft_atoi(av[2]) <= 0 || check_valid_num(av[2]) == 1)
 		return (write(2, "Error: Invalid time to die\n", 27), 1);
