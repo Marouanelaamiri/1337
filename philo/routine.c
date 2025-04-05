@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:35:31 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/05 15:12:45 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/05 16:03:40 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	*routine(void *ptr)
 
 	philo = (t_philo *)ptr;
 	if (philo->id % 2 == 0)
-		usleep(10000);
+		usleep(400);
 	while (!check_dead_loop(philo))
 	{
 		ft_eat(philo);
