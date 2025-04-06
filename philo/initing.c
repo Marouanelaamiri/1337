@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:40:15 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/05 15:05:14 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/06 13:14:18 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	init_philos(t_philo *philos, t_sim *sim,
 	while (i < num_philos)
 	{
 		philos[i].id = i + 1;
-		philos[i].eating = 0;
 		philos[i].meals_eaten = 0;
 		init_input(&philos[i], av);
 		philos[i].start_timer = get_time();

@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:35:31 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/05 16:03:40 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/06 13:46:08 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ void	ft_eat(t_philo *philo)
 	}
 	pthread_mutex_lock(philo->left_fork);
 	send_msg("has taken a fork", philo, philo->id);
-	philo->eating = 1;
 	send_msg("is eating", philo, philo->id);
 	pthread_mutex_lock(philo->meal_lock);
 	philo->last_meal = get_time();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->meal_lock);
 	ft_pause(philo, philo->time_to_eat);
-	philo->eating = 0;
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }
@@ -56,6 +54,13 @@ void	*routine(void *ptr)
 		usleep(400);
 	while (!check_dead_loop(philo))
 	{
+		pthread_mutex_lock(philo->meal_lock);
+		if (philo->num_of_eat != -1 && philo->meals_eaten >= philo->num_of_eat)
+		{
+			pthread_mutex_unlock(philo->meal_lock);
+			break ;
+		}
+		pthread_mutex_unlock(philo->meal_lock);
 		ft_eat(philo);
 		ft_sleep(philo);
 		ft_think(philo);

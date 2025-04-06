@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 16:01:16 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/05 16:10:17 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/06 13:14:13 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 typedef struct s_philo
 {
 	int				id;
-	int				eating;
 	int				meals_eaten;
 	int				philo_nums;
 	int				num_of_eat;
