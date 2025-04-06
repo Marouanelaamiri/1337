@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:56:45 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/06 12:30:28 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/06 13:50:16 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	ft_pause(t_philo *philo, size_t milliseconds)
 	{
 		if (check_dead_loop(philo))
 			return (1);
+		usleep(400);
 	}
 	return (0);
 }

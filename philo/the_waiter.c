@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:56:33 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/06 13:46:48 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/06 13:52:40 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	*waiter(void *ptr)
 	{
 		if (check_if_any_died(philos) == 1 || check_if_all_ate(philos) == 1)
 			break ;
-		usleep (400);
+		usleep(400);
 	}
 	return (ptr);
 }
