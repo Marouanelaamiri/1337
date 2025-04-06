@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+         #
+#    By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 16:24:51 by malaamir          #+#    #+#              #
-#    Updated: 2025/03/08 21:04:34 by malaamir         ###   ########.fr        #
+#    Updated: 2025/04/06 15:45:24 by malaamir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJ = $(SRC:.c=.o)
 #------------------------------Compiler and Flages------------------------------#
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g -pthread
+CFLAGS = -Wall -Wextra -Werror
 #------------------------------Includes and Exuctables--------------------------#
 NAME = philo
 
