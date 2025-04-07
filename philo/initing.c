@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:40:15 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/06 16:43:14 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/07 13:41:02 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int	init_threads(t_sim *sim, pthread_mutex_t *forks)
 	pthread_t	observer;
 	int			i;
 
+	i = 0;
 	if (pthread_create(&observer, NULL, &waiter, sim->philos) != 0)
 		destroy_all("Error\n", sim, forks);
-	i = 0;
 	while (i < sim->philos[0].philo_nums)
 	{
 		if (pthread_create(&sim->philos[i].thread, NULL, &routine,
