@@ -6,7 +6,7 @@
 /*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:35:31 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/07 13:41:38 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:52:36 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	ft_sleep(t_philo *philo)
 
 void	ft_eat(t_philo *philo)
 {
-	 if (philo->num_of_eat != -1 && philo->meals_eaten >= philo->num_of_eat)
-        return;
 	pthread_mutex_lock(philo->right_fork);
 	send_msg("has taken a fork", philo, philo->id);
 	if (philo->philo_nums == 1)
@@ -35,18 +33,18 @@ void	ft_eat(t_philo *philo)
 		pthread_mutex_unlock(philo->right_fork);
 		return ;
 	}
+	if (philo->num_of_eat != -1 && philo->meals_eaten >= philo->num_of_eat)
+		return ;
 	pthread_mutex_lock(philo->left_fork);
 	send_msg("has taken a fork", philo, philo->id);
+	philo->eating = 1;
 	pthread_mutex_lock(philo->meal_lock);
 	philo->last_meal = get_time();
-	philo->eating = 1;
 	philo->meals_eaten++;
 	send_msg("is eating", philo, philo->id);
 	pthread_mutex_unlock(philo->meal_lock);
 	ft_pause(philo, philo->time_to_eat);
-	pthread_mutex_lock(philo->meal_lock);
 	philo->eating = 0;
-	pthread_mutex_unlock(philo->meal_lock);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }
@@ -57,7 +55,7 @@ void	*routine(void *ptr)
 
 	philo = (t_philo *)ptr;
 	if (philo->id % 2 == 0)
-		usleep(400);
+		usleep(500);
 	while (!check_dead_loop(philo))
 	{
 		ft_eat(philo);
