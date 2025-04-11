@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+         #
+#    By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 16:24:51 by malaamir          #+#    #+#              #
-#    Updated: 2025/04/06 15:45:24 by malaamir         ###   ########.fr        #
+#    Updated: 2025/04/09 16:24:25 by malaamir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #------------------------------Source Files------------------------------------#
 SRC = ft_atoi.c ft_strlen.c initing.c parsing.c philo.c routine.c the_waiter.c \
-	utils.c
+	utils.c even_odd.c
  
 #------------------------------Object Files------------------------------------#
 OBJ = $(SRC:.c=.o)
