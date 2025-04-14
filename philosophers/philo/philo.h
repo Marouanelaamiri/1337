@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 16:01:16 by malaamir          #+#    #+#             */
-/*   Updated: 2025/04/09 16:21:08 by malaamir         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:56:49 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,5 @@ void	send_msg(char *str, t_philo *philo, int id);
 void	destroy_all(char *str, t_sim *program, pthread_mutex_t *forks);
 size_t	get_time(void);
 int		ft_pause(t_philo *philo, size_t milliseconds);
-void	even_odd(t_philo *philo);
 
 #endif

@@ -1,23 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   philo_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 17:33:20 by malaamir          #+#    #+#             */
-/*   Updated: 2025/03/04 17:34:37 by malaamir         ###   ########.fr       */
+/*   Created: 2025/04/05 15:32:53 by malaamir          #+#    #+#             */
+/*   Updated: 2025/04/06 16:53:57 by malaamir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	ft_strlen(const char *s)
-{
-	int	len;
 
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}

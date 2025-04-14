@@ -3,23 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malaamir <malaamir@student.1337.ma>        +#+  +:+       +#+         #
+#    By: malaamir <malaamir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/04/05 15:20:36 by malaamir          #+#    #+#              #
-#    Updated: 2025/04/05 15:30:58 by malaamir         ###   ########.fr        #
+#    Created: 2025/03/04 16:24:51 by malaamir          #+#    #+#              #
+#    Updated: 2025/04/10 18:34:41 by malaamir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_BONUS = 
+#------------------------------Source Files------------------------------------#
+SRC = ft_atoi.c ft_strlen.c initing.c parsing.c philo.c routine.c the_waiter.c \
+	utils.c
  
 #------------------------------Object Files------------------------------------#
-OBJ_BONUS = $(SRC:.c=.o)
+OBJ = $(SRC:.c=.o)
 #------------------------------Compiler and Flages------------------------------#
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g -pthread
+CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g
 #------------------------------Includes and Exuctables--------------------------#
-NAME = philo_bonus
+NAME = philo
 
 #------------------------------Rules---------------------------------------------#
 all: $(NAME)
@@ -28,7 +30,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.c philo_bonus.h
+%.o: %.c philo.h
 	$(CC) $(CFLAGS) -c $< -o $@
 #------------------------------Clean---------------------------------------------#
 clean :
